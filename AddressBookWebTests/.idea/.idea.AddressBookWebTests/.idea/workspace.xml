@@ -20,6 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="42cea855-ced3-4504-ac52-b20f8365fc90" name="Default Changelist" comment="Refactor CreateGroupTest">
+      <change afterPath="$PROJECT_DIR$/AccountData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/GroupData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.AddressBookWebTests/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AddressBookWebTests/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CreateGroupTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CreateGroupTest.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,11 +36,19 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/CreateGroupTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///CreateGroupTest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///CreateGroupTest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GroupData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///CreateGroupTest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/AccountData.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/AccountData.cs" />
+        <option value="$PROJECT_DIR$/Form.cs" />
+        <option value="$PROJECT_DIR$/Group.cs" />
         <option value="$PROJECT_DIR$/CreateGroupTest.cs" />
+        <option value="$PROJECT_DIR$/GroupData.cs" />
       </list>
     </option>
   </component>
@@ -128,6 +139,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="560" y="279" key="Rider.ProjectTemplateDialog.Size/0.0.1920.1080@0.0.1920.1080" timestamp="1596201105782" />
+    <state x="637" y="257" key="RollbackChangesDialog" timestamp="1596262303939">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="637" y="257" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1596262303939" />
     <state x="560" y="280" key="Vcs.Push.Dialog.v2" timestamp="1596260632501">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
