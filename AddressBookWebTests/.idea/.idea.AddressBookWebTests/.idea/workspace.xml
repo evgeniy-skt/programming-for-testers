@@ -19,11 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42cea855-ced3-4504-ac52-b20f8365fc90" name="Default Changelist" comment="Refactor CreateGroupTest">
-      <change afterPath="$PROJECT_DIR$/AccountData.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/GroupData.cs" afterDir="false" />
+    <list default="true" id="42cea855-ced3-4504-ac52-b20f8365fc90" name="Default Changelist" comment="Create new classes GroupData and AccountData">
+      <change afterPath="$PROJECT_DIR$/ContactData.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CreateContactTest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AddressBookWebTests/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AddressBookWebTests/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CreateGroupTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CreateGroupTest.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,8 +36,11 @@
     <setting file="file://$PROJECT_DIR$/CreateGroupTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///CreateGroupTest.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///CreateGroupTest.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/GroupData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///CreateGroupTest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/GroupData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/CreateContactTest.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///CreateGroupTest.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/ContactData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/AccountData.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -47,8 +49,10 @@
         <option value="$PROJECT_DIR$/AccountData.cs" />
         <option value="$PROJECT_DIR$/Form.cs" />
         <option value="$PROJECT_DIR$/Group.cs" />
-        <option value="$PROJECT_DIR$/CreateGroupTest.cs" />
         <option value="$PROJECT_DIR$/GroupData.cs" />
+        <option value="$PROJECT_DIR$/CreateGroupTest.cs" />
+        <option value="$PROJECT_DIR$/ContactData.cs" />
+        <option value="$PROJECT_DIR$/CreateContactTest.cs" />
       </list>
     </option>
   </component>
@@ -107,7 +111,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596260627067</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Create new classes GroupData and AccountData">
+      <created>1596264121369</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1596264121369</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,7 +143,8 @@
     <MESSAGE value="Create test solution" />
     <MESSAGE value="Add CreateGroupTest" />
     <MESSAGE value="Refactor CreateGroupTest" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactor CreateGroupTest" />
+    <MESSAGE value="Create new classes GroupData and AccountData" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create new classes GroupData and AccountData" />
   </component>
   <component name="WindowStateProjectService">
     <state x="560" y="279" key="Rider.ProjectTemplateDialog.Size" timestamp="1596201105782">
@@ -143,10 +155,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="637" y="257" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1596262303939" />
-    <state x="560" y="280" key="Vcs.Push.Dialog.v2" timestamp="1596260632501">
+    <state x="560" y="280" key="Vcs.Push.Dialog.v2" timestamp="1596264125302">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="420" y="233" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1596258884662" />
-    <state x="560" y="280" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1596260632501" />
+    <state x="560" y="280" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1596264125302" />
   </component>
 </project>
