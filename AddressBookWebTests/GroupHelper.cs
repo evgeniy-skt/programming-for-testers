@@ -2,13 +2,10 @@ using OpenQA.Selenium;
 
 namespace AddressBookWebTests
 {
-    public class GroupHelper
+    public class GroupHelper : HelperBase
     {
-        private readonly IWebDriver _driver;
-
-        public GroupHelper(IWebDriver driver)
+        public GroupHelper(IWebDriver driver) : base(driver)
         {
-            _driver = driver;
         }
 
         public void InitGroupCreation()

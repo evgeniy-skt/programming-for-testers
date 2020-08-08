@@ -2,14 +2,12 @@ using OpenQA.Selenium;
 
 namespace AddressBookWebTests
 {
-    public class NavigationHelper
+    public class NavigationHelper : HelperBase
     {
-        private readonly IWebDriver _driver;
         private readonly string _baseUrl;
 
-        public NavigationHelper(IWebDriver driver, string baseUrl)
+        public NavigationHelper(IWebDriver driver, string baseUrl) : base(driver)
         {
-            _driver = driver;
             _baseUrl = baseUrl;
         }
 

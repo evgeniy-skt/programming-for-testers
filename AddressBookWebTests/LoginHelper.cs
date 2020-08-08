@@ -2,13 +2,10 @@ using OpenQA.Selenium;
 
 namespace AddressBookWebTests
 {
-    public class LoginHelper
+    public class LoginHelper : HelperBase
     {
-        private readonly IWebDriver _driver;
-
-        public LoginHelper(IWebDriver driver)
+        public LoginHelper(IWebDriver driver) : base(driver)
         {
-            _driver = driver;
         }
 
         public void Login(AccountData account)
