@@ -11,7 +11,9 @@ namespace AddressBookWebTests
         private IWebDriver _driver;
         private StringBuilder _verificationErrors;
         private string _baseUrl;
+
         protected LoginHelper _loginHelper;
+        protected NavigationHelper _navigationHelper;
 
         [SetUp]
         public void SetupTest()
@@ -21,6 +23,7 @@ namespace AddressBookWebTests
             _verificationErrors = new StringBuilder();
 
             _loginHelper = new LoginHelper(_driver);
+            _navigationHelper = new NavigationHelper(_driver, _baseUrl);
         }
 
         [TearDown]
@@ -36,16 +39,6 @@ namespace AddressBookWebTests
             }
 
             Assert.AreEqual("", _verificationErrors.ToString());
-        }
-
-        protected void OpenAuthPage()
-        {
-            _driver.Navigate().GoToUrl(_baseUrl);
-        }
-
-        protected void GoToGroupsPage()
-        {
-            _driver.FindElement(By.LinkText("groups")).Click();
         }
 
         protected void InitGroupCreation()
@@ -67,11 +60,6 @@ namespace AddressBookWebTests
         protected void SubmitGroupCreation()
         {
             _driver.FindElement(By.Name("submit")).Click();
-        }
-
-        protected void ReturnToGroupsPage()
-        {
-            _driver.FindElement(By.LinkText("groups")).Click();
         }
 
         protected void SelectGroup(int index)
@@ -101,11 +89,6 @@ namespace AddressBookWebTests
         protected void SubmitContactCreation()
         {
             _driver.FindElement(By.Name("submit")).Click();
-        }
-
-        protected void ReturnToHomePage()
-        {
-            _driver.FindElement(By.LinkText("home page")).Click();
         }
 
         protected void LogOut()

@@ -8,12 +8,12 @@ namespace AddressBookWebTests
         [Test]
         public void CreateContactTest()
         {
-            OpenAuthPage();
+           _navigationHelper.OpenAuthPage();
             _loginHelper.Login(new AccountData("admin", "secret"));
             InitContactCreation();
             FillContactForm(new ContactData("Stepan", "Stepanov"));
             SubmitContactCreation();
-            ReturnToHomePage();
+            _navigationHelper.ReturnToHomePage();
             LogOut();
         }
     }

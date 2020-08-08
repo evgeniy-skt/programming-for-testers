@@ -8,16 +8,16 @@ namespace AddressBookWebTests
         [Test]
         public void CreateGroupTest()
         {
-            OpenAuthPage();
+            _navigationHelper.OpenAuthPage();
             _loginHelper.Login(new AccountData("admin", "secret"));
-            GoToGroupsPage();
+            _navigationHelper.GoToGroupsPage();
             InitGroupCreation();
             var group = new GroupData("Group name");
             group.Header = "Group header";
             group.Footer = "Group footer";
             FillGroupForm(group);
             SubmitGroupCreation();
-            ReturnToGroupsPage();
+            _navigationHelper.ReturnToGroupsPage();
             LogOut();
         }
     }

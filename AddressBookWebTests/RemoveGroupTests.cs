@@ -8,12 +8,12 @@ namespace AddressBookWebTests
         [Test]
         public void RemoveGroupTest()
         {
-            OpenAuthPage();
+            _navigationHelper.OpenAuthPage();
             _loginHelper.Login(new AccountData("admin", "secret"));
-            GoToGroupsPage();
+            _navigationHelper.GoToGroupsPage();
             SelectGroup(1);
             DeleteGroup();
-            ReturnToGroupsPage();
+            _navigationHelper.ReturnToGroupsPage();
             LogOut();
         }
     }
