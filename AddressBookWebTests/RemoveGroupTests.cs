@@ -11,8 +11,8 @@ namespace AddressBookWebTests
             _navigationHelper.OpenAuthPage();
             _loginHelper.Login(new AccountData("admin", "secret"));
             _navigationHelper.GoToGroupsPage();
-            SelectGroup(1);
-            DeleteGroup();
+            _groupHelper.SelectGroup(1);
+            _groupHelper.DeleteGroup();
             _navigationHelper.ReturnToGroupsPage();
             LogOut();
         }

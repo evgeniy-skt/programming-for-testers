@@ -14,6 +14,7 @@ namespace AddressBookWebTests
 
         protected LoginHelper _loginHelper;
         protected NavigationHelper _navigationHelper;
+        protected GroupHelper _groupHelper;
 
         [SetUp]
         public void SetupTest()
@@ -24,6 +25,7 @@ namespace AddressBookWebTests
 
             _loginHelper = new LoginHelper(_driver);
             _navigationHelper = new NavigationHelper(_driver, _baseUrl);
+            _groupHelper = new GroupHelper(_driver);
         }
 
         [TearDown]
@@ -41,36 +43,6 @@ namespace AddressBookWebTests
             Assert.AreEqual("", _verificationErrors.ToString());
         }
 
-        protected void InitGroupCreation()
-        {
-            _driver.FindElement(By.Name("new")).Click();
-        }
-
-        protected void FillGroupForm(GroupData group)
-        {
-            _driver.FindElement(By.Name("group_name")).Click();
-            _driver.FindElement(By.Name("group_name")).Clear();
-            _driver.FindElement(By.Name("group_name")).SendKeys(group.Name);
-            _driver.FindElement(By.Name("group_header")).Clear();
-            _driver.FindElement(By.Name("group_header")).SendKeys(group.Header);
-            _driver.FindElement(By.Name("group_footer")).Clear();
-            _driver.FindElement(By.Name("group_footer")).SendKeys(group.Footer);
-        }
-
-        protected void SubmitGroupCreation()
-        {
-            _driver.FindElement(By.Name("submit")).Click();
-        }
-
-        protected void SelectGroup(int index)
-        {
-            _driver.FindElement(By.XPath($"(//input[@name='selected[]'])[{index}]")).Click();
-        }
-
-        protected void DeleteGroup()
-        {
-            _driver.FindElement(By.Name("delete")).Click();
-        }
 
         protected void InitContactCreation()
         {
