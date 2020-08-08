@@ -15,6 +15,7 @@ namespace AddressBookWebTests
         protected LoginHelper _loginHelper;
         protected NavigationHelper _navigationHelper;
         protected GroupHelper _groupHelper;
+        protected ContactHelper _contactHelper;
 
         [SetUp]
         public void SetupTest()
@@ -26,6 +27,7 @@ namespace AddressBookWebTests
             _loginHelper = new LoginHelper(_driver);
             _navigationHelper = new NavigationHelper(_driver, _baseUrl);
             _groupHelper = new GroupHelper(_driver);
+            _contactHelper = new ContactHelper(_driver);
         }
 
         [TearDown]
@@ -43,25 +45,6 @@ namespace AddressBookWebTests
             Assert.AreEqual("", _verificationErrors.ToString());
         }
 
-
-        protected void InitContactCreation()
-        {
-            _driver.FindElement(By.LinkText("add new")).Click();
-        }
-
-        protected void FillContactForm(ContactData contact)
-        {
-            _driver.FindElement(By.Name("firstname")).Click();
-            _driver.FindElement(By.Name("firstname")).Clear();
-            _driver.FindElement(By.Name("firstname")).SendKeys(contact.FirstName);
-            _driver.FindElement(By.Name("lastname")).Clear();
-            _driver.FindElement(By.Name("lastname")).SendKeys(contact.LastName);
-        }
-
-        protected void SubmitContactCreation()
-        {
-            _driver.FindElement(By.Name("submit")).Click();
-        }
 
         protected void LogOut()
         {
