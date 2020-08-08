@@ -19,9 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="42cea855-ced3-4504-ac52-b20f8365fc90" name="Default Changelist" comment="Add CreateContact test and ContactData class">
-      <change afterPath="$PROJECT_DIR$/RemoveGroupTests.cs" afterDir="false" />
+    <list default="true" id="42cea855-ced3-4504-ac52-b20f8365fc90" name="Default Changelist" comment="Add RemoveGroupTest">
+      <change afterPath="$PROJECT_DIR$/TestBase.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.AddressBookWebTests/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.AddressBookWebTests/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CreateGroupTest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CreateGroupTest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/RemoveGroupTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/RemoveGroupTests.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +40,7 @@
     <setting file="file://$PROJECT_DIR$/CreateGroupTest.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/AccountData.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ContactData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/TestBase.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -50,9 +53,9 @@
         <option value="$PROJECT_DIR$/.idea/.idea.AddressBookWebTests/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/RemoveGroupTest.cs" />
         <option value="$PROJECT_DIR$/CreateContactTest.cs" />
+        <option value="$PROJECT_DIR$/TestBase.cs" />
         <option value="$PROJECT_DIR$/RemoveGroupTests.cs" />
         <option value="$PROJECT_DIR$/CreateGroupTest.cs" />
-        <option value="$PROJECT_DIR$/TestBase.cs" />
       </list>
     </option>
   </component>
@@ -89,7 +92,7 @@
       <updated>1596201105577</updated>
       <workItem from="1596201115790" duration="1189000" />
       <workItem from="1596258040792" duration="2178000" />
-      <workItem from="1596867555340" duration="1178000" />
+      <workItem from="1596867555340" duration="2775000" />
     </task>
     <task id="LOCAL-00001" summary="Create test solution">
       <created>1596201153977</created>
@@ -126,7 +129,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596265993254</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Add RemoveGroupTest">
+      <created>1596872655024</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1596872655024</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,7 +163,8 @@
     <MESSAGE value="Refactor CreateGroupTest" />
     <MESSAGE value="Create new classes GroupData and AccountData" />
     <MESSAGE value="Add CreateContact test and ContactData class" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add CreateContact test and ContactData class" />
+    <MESSAGE value="Add RemoveGroupTest" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add RemoveGroupTest" />
   </component>
   <component name="WindowStateProjectService">
     <state x="560" y="279" key="Rider.ProjectTemplateDialog.Size" timestamp="1596201105782">
@@ -164,10 +175,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="637" y="257" key="RollbackChangesDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1596262303939" />
-    <state x="560" y="280" key="Vcs.Push.Dialog.v2" timestamp="1596265998115">
+    <state x="560" y="280" key="Vcs.Push.Dialog.v2" timestamp="1596872657627">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="420" y="233" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1596258884662" />
-    <state x="560" y="280" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1596265998115" />
+    <state x="560" y="280" key="Vcs.Push.Dialog.v2/0.0.1920.1080@0.0.1920.1080" timestamp="1596872657627" />
   </component>
 </project>
