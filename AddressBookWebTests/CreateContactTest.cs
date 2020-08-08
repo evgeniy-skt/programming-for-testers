@@ -9,7 +9,7 @@ namespace AddressBookWebTests
         public void CreateContactTest()
         {
             OpenAuthPage();
-            Login(new AccountData("admin", "secret"));
+            _loginHelper.Login(new AccountData("admin", "secret"));
             InitContactCreation();
             FillContactForm(new ContactData("Stepan", "Stepanov"));
             SubmitContactCreation();

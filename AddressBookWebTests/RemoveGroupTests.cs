@@ -9,7 +9,7 @@ namespace AddressBookWebTests
         public void RemoveGroupTest()
         {
             OpenAuthPage();
-            Login(new AccountData("admin", "secret"));
+            _loginHelper.Login(new AccountData("admin", "secret"));
             GoToGroupsPage();
             SelectGroup(1);
             DeleteGroup();

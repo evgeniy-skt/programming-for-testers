@@ -9,7 +9,7 @@ namespace AddressBookWebTests
         public void CreateGroupTest()
         {
             OpenAuthPage();
-            Login(new AccountData("admin", "secret"));
+            _loginHelper.Login(new AccountData("admin", "secret"));
             GoToGroupsPage();
             InitGroupCreation();
             var group = new GroupData("Group name");

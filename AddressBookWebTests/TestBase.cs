@@ -11,6 +11,7 @@ namespace AddressBookWebTests
         private IWebDriver _driver;
         private StringBuilder _verificationErrors;
         private string _baseUrl;
+        protected LoginHelper _loginHelper;
 
         [SetUp]
         public void SetupTest()
@@ -18,6 +19,8 @@ namespace AddressBookWebTests
             _driver = new ChromeDriver();
             _baseUrl = "http://localhost:8080/addressbook/index.php";
             _verificationErrors = new StringBuilder();
+
+            _loginHelper = new LoginHelper(_driver);
         }
 
         [TearDown]
@@ -38,15 +41,6 @@ namespace AddressBookWebTests
         protected void OpenAuthPage()
         {
             _driver.Navigate().GoToUrl(_baseUrl);
-        }
-
-        protected void Login(AccountData account)
-        {
-            _driver.FindElement(By.Name("user")).Clear();
-            _driver.FindElement(By.Name("user")).SendKeys(account.UserName);
-            _driver.FindElement(By.Name("pass")).Clear();
-            _driver.FindElement(By.Name("pass")).SendKeys(account.Password);
-            _driver.FindElement(By.Id("LoginForm")).Submit();
         }
 
         protected void GoToGroupsPage()
