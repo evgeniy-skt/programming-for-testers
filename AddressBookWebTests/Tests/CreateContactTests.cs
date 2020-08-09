@@ -8,11 +8,8 @@ namespace AddressBookWebTests
         [Test]
         public void CreateContactTest()
         {
-            _applicationManager.Contact
-                .InitContactCreation()
-                .FillContactForm(new ContactData("Stepan", "Stepanov"))
-                .SubmitContactCreation();
-            _applicationManager.Navigator.ReturnToHomePage();
+            var contact = new ContactData("Gogi", "Stepanidze");
+            _applicationManager.Contact.Create(contact);
         }
     }
 }
