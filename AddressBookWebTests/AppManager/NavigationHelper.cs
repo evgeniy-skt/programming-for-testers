@@ -6,29 +6,29 @@ namespace AddressBookWebTests
     {
         private readonly string _baseUrl;
 
-        public NavigationHelper(IWebDriver driver, string baseUrl) : base(driver)
+        public NavigationHelper(ApplicationManager manager, string baseUrl) : base(manager)
         {
             _baseUrl = baseUrl;
         }
 
         public void OpenAuthPage()
         {
-            _driver.Navigate().GoToUrl(_baseUrl);
+            Driver.Navigate().GoToUrl(_baseUrl);
         }
 
         public void GoToGroupsPage()
         {
-            _driver.FindElement(By.LinkText("groups")).Click();
+            Driver.FindElement(By.LinkText("groups")).Click();
         }
 
         public void ReturnToHomePage()
         {
-            _driver.FindElement(By.LinkText("home page")).Click();
+            Driver.FindElement(By.LinkText("home page")).Click();
         }
 
         public void ReturnToGroupsPage()
         {
-            _driver.FindElement(By.LinkText("groups")).Click();
+            Driver.FindElement(By.LinkText("groups")).Click();
         }
     }
 }

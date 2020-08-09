@@ -6,18 +6,17 @@ namespace AddressBookWebTests
 {
     public class ApplicationManager
     {
-        private readonly IWebDriver _driver;
-        private string _baseUrl;
+        private readonly string _baseUrl;
 
         public ApplicationManager()
         {
-            _driver = new ChromeDriver();
+            Driver = new ChromeDriver();
             _baseUrl = "http://localhost:8080/addressbook/index.php";
 
-            Auth = new LoginHelper(_driver);
-            Navigator = new NavigationHelper(_driver, _baseUrl);
-            Group = new GroupHelper(_driver);
-            Contact = new ContactHelper(_driver);
+            Auth = new LoginHelper(this);
+            Navigator = new NavigationHelper(this, _baseUrl);
+            Group = new GroupHelper(this);
+            Contact = new ContactHelper(this);
         }
 
         public LoginHelper Auth { get; }
@@ -28,11 +27,13 @@ namespace AddressBookWebTests
 
         public ContactHelper Contact { get; }
 
+        public IWebDriver Driver { get; }
+
         public void Stop()
         {
             try
             {
-                _driver.Quit();
+                Driver.Quit();
             }
             catch (Exception)
             {
