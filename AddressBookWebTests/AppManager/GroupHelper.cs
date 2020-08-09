@@ -8,12 +8,13 @@ namespace AddressBookWebTests
         {
         }
 
-        public void InitGroupCreation()
+        public GroupHelper InitGroupCreation()
         {
             _driver.FindElement(By.Name("new")).Click();
+            return this;
         }
 
-        public void FillGroupForm(GroupData group)
+        public GroupHelper FillGroupForm(GroupData group)
         {
             _driver.FindElement(By.Name("group_name")).Click();
             _driver.FindElement(By.Name("group_name")).Clear();
@@ -22,21 +23,25 @@ namespace AddressBookWebTests
             _driver.FindElement(By.Name("group_header")).SendKeys(group.Header);
             _driver.FindElement(By.Name("group_footer")).Clear();
             _driver.FindElement(By.Name("group_footer")).SendKeys(group.Footer);
+            return this;
         }
 
-        public void SubmitGroupCreation()
+        public GroupHelper SubmitGroupCreation()
         {
             _driver.FindElement(By.Name("submit")).Click();
+            return this;
         }
 
-        public void SelectGroup(int index)
+        public GroupHelper SelectGroup(int index)
         {
             _driver.FindElement(By.XPath($"(//input[@name='selected[]'])[{index}]")).Click();
+            return this;
         }
 
-        public void DeleteGroup()
+        public GroupHelper DeleteGroup()
         {
             _driver.FindElement(By.Name("delete")).Click();
+            return this;
         }
     }
 }
