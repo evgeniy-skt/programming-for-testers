@@ -8,6 +8,14 @@ namespace AddressBookWebTests
         {
         }
 
+        public GroupHelper Create(GroupData group)
+        {
+            InitGroupCreation();
+            FillGroupForm(group);
+            SubmitGroupCreation();
+            return this;
+        }
+
         public GroupHelper InitGroupCreation()
         {
             _driver.FindElement(By.Name("new")).Click();
