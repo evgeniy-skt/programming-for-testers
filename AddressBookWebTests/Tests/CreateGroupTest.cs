@@ -18,5 +18,19 @@ namespace AddressBookWebTests
                 .SubmitGroupCreation();
             _applicationManager.Navigator.ReturnToGroupsPage();
         }
+        
+        [Test]
+        public void CreateGroupWithEmptyFieldsTest()
+        {
+            _applicationManager.Navigator.GoToGroupsPage();
+            var group = new GroupData("");
+            group.Header = "";
+            group.Footer = "";
+            _applicationManager.Group
+                .InitGroupCreation()
+                .FillGroupForm(group)
+                .SubmitGroupCreation();
+            _applicationManager.Navigator.ReturnToGroupsPage();
+        }
     }
 }
