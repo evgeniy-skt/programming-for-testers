@@ -9,7 +9,7 @@ namespace AddressBookWebTests
         public void ModificationGroupTest()
         {
             var newData = new GroupData("Edited name") {Header = "Edited header", Footer = "Edited footer"};
-            GroupHelper.Modify(1, newData);
+            _applicationManager.Group.Modify(1, newData);
         }
     }
 }

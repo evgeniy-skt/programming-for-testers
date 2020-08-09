@@ -20,7 +20,7 @@ namespace AddressBookWebTests
             _manager.Navigator.ReturnToGroupsPage();
         }
 
-        public static void Modify(int groupIndex, GroupData newData)
+        public void Modify(int groupIndex, GroupData newData)
         {
             _manager.Navigator.GoToGroupsPage();
             SelectGroup(groupIndex);

@@ -9,7 +9,7 @@ namespace AddressBookWebTests
         public void ModificationContactTest()
         {
             var newData = new ContactData("Stepan", "Gogoidze");
-            ContactHelper.Modify(1, newData);
+            ContactHelper.Modify(2, newData);
         }
     }
 }

@@ -28,6 +28,20 @@ namespace AddressBookWebTests
             _applicationManager.Navigator.ReturnToHomePage();
         }
 
+        public void Remove(int contactIndex)
+        {
+            _applicationManager.Navigator.GoToContactPage();
+            SelectContact(contactIndex);
+            DeleteContact();
+            AcceptAlert();
+            _applicationManager.Navigator.ReturnToHomePage();
+        }
+
+        private static void DeleteContact()
+        {
+            Driver.FindElement(By.XPath("//*[@id=\"content\"]/form[2]/div[2]/input")).Click();
+        }
+
         private static void SubmitContactModification()
         {
             Driver.FindElement(By.Name("update")).Click();
@@ -54,7 +68,17 @@ namespace AddressBookWebTests
 
         private static void InitContactModification(int index)
         {
-            Driver.FindElement(By.CssSelector($"a[href=\"edit.php?id={index}\"]")).Click();
+            Driver.FindElement(By.XPath($"//*[@id=\"maintable\"]/tbody/tr[{index}]/td[8]/a/img")).Click();
+        }
+
+        private static void SelectContact(int index)
+        {
+            Driver.FindElement(By.XPath($"(//input[@name='selected[]'])[{index}]")).Click();
+        }
+
+        private static void AcceptAlert()
+        {
+            Driver.SwitchTo().Alert().Accept();
         }
     }
 }

@@ -23,7 +23,7 @@ namespace AddressBookWebTests
 
         public void ReturnToHomePage()
         {
-            Driver.FindElement(By.LinkText("home page")).Click();
+            Driver.FindElement(By.LinkText("home")).Click();
         }
 
         public void ReturnToGroupsPage()
