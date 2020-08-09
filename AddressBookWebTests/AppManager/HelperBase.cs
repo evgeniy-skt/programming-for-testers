@@ -4,7 +4,7 @@ namespace AddressBookWebTests
 {
     public class HelperBase
     {
-        protected readonly IWebDriver Driver;
+        protected static IWebDriver Driver;
 
         protected HelperBase(ApplicationManager manager)
         {
