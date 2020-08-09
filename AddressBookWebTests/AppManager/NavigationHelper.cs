@@ -30,5 +30,10 @@ namespace AddressBookWebTests
         {
             Driver.FindElement(By.LinkText("groups")).Click();
         }
+
+        public void GoToContactPage()
+        {
+            Driver.FindElement(By.LinkText("home")).Click();
+        }
     }
 }

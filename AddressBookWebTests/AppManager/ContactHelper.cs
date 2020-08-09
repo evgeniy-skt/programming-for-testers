@@ -4,11 +4,33 @@ namespace AddressBookWebTests
 {
     public class ContactHelper : HelperBase
     {
-        private readonly ApplicationManager _applicationManager;
+        private static ApplicationManager _applicationManager;
 
         public ContactHelper(ApplicationManager manager) : base(manager)
         {
             _applicationManager = manager;
+        }
+
+        public void Create(ContactData contact)
+        {
+            InitContactCreation();
+            FillContactForm(contact);
+            SubmitContactCreation();
+            _applicationManager.Navigator.ReturnToHomePage();
+        }
+
+        public static void Modify(int contactIndex, ContactData newData)
+        {
+            _applicationManager.Navigator.GoToContactPage();
+            InitContactModification(contactIndex);
+            FillContactForm(newData);
+            SubmitContactModification();
+            _applicationManager.Navigator.ReturnToHomePage();
+        }
+
+        private static void SubmitContactModification()
+        {
+            Driver.FindElement(By.Name("update")).Click();
         }
 
         private static void SubmitContactCreation()
@@ -30,12 +52,9 @@ namespace AddressBookWebTests
             Driver.FindElement(By.Name("lastname")).SendKeys(contact.LastName);
         }
 
-        public void Create(ContactData contact)
+        private static void InitContactModification(int index)
         {
-            InitContactCreation();
-            FillContactForm(contact);
-            SubmitContactCreation();
-            _applicationManager.Navigator.ReturnToHomePage();
+            Driver.FindElement(By.CssSelector($"a[href=\"edit.php?id={index}\"]")).Click();
         }
     }
 }
