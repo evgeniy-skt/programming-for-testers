@@ -59,11 +59,8 @@ namespace AddressBookWebTests
 
         private static void FillContactForm(ContactData contact)
         {
-            Driver.FindElement(By.Name("firstname")).Click();
-            Driver.FindElement(By.Name("firstname")).Clear();
-            Driver.FindElement(By.Name("firstname")).SendKeys(contact.FirstName);
-            Driver.FindElement(By.Name("lastname")).Clear();
-            Driver.FindElement(By.Name("lastname")).SendKeys(contact.LastName);
+            Type(By.Name("firstname"), contact.FirstName);
+            Type(By.Name("lastname"), contact.LastName);
         }
 
         private static void InitContactModification(int index)
