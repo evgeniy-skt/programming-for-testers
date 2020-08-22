@@ -35,9 +35,11 @@ namespace AddressBookWebTests
 
         public static ApplicationManager GetInstance()
         {
-            if (! applicationManager.IsValueCreated)
+            if (!applicationManager.IsValueCreated)
             {
-                applicationManager.Value = new ApplicationManager();
+                var newInstance = new ApplicationManager();
+                newInstance.Navigator.OpenAuthPage();
+                applicationManager.Value = newInstance;
             }
 
             return applicationManager.Value;
