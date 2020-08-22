@@ -30,15 +30,18 @@ namespace AddressBookWebTests
             return IsElementPresent(By.Name("logout"));
         }
 
-        private bool IsLoggedIn(AccountData account)
+        public bool IsLoggedIn(AccountData account)
         {
             return IsLoggedIn() && Driver.FindElement(By.Name("logout")).FindElement(By.TagName("b")).Text ==
                 "(" + account.UserName + ")";
         }
 
-        private static void Logout()
+        public void Logout()
         {
-            Driver.FindElement(By.LinkText("Logout")).Click();
+            if (IsLoggedIn())
+            {
+                Driver.FindElement(By.LinkText("Logout")).Click();
+            }
         }
     }
 }
