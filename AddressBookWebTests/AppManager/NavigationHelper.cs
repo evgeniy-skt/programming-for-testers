@@ -13,26 +13,51 @@ namespace AddressBookWebTests
 
         public void OpenAuthPage()
         {
+            if (Driver.Url == _baseUrl + "index.php")
+            {
+                return;
+            }
+
             Driver.Navigate().GoToUrl(_baseUrl);
         }
 
         public void GoToGroupsPage()
         {
+            if (Driver.Url == _baseUrl + "group.php" && IsElementPresent(By.Name("new")))
+            {
+                return;
+            }
+
             Driver.FindElement(By.LinkText("groups")).Click();
         }
 
         public void ReturnToHomePage()
         {
+            if (Driver.Url == _baseUrl + "index.php")
+            {
+                return;
+            }
+
             Driver.FindElement(By.LinkText("home")).Click();
         }
 
         public void ReturnToGroupsPage()
         {
+            if (Driver.Url == _baseUrl + "group.php" && IsElementPresent(By.Name("new")))
+            {
+                return;
+            }
+
             Driver.FindElement(By.LinkText("groups")).Click();
         }
 
         public void GoToContactPage()
         {
+            if (Driver.Url == _baseUrl + "index.php")
+            {
+                return;
+            }
+
             Driver.FindElement(By.LinkText("home")).Click();
         }
     }

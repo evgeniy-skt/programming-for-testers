@@ -13,7 +13,7 @@ namespace AddressBookWebTests
         private ApplicationManager()
         {
             Driver = new ChromeDriver();
-            _baseUrl = "http://localhost:8080/addressbook/index.php";
+            _baseUrl = "http://localhost:8080/addressbook/";
 
             Auth = new LoginHelper(this);
             Navigator = new NavigationHelper(this, _baseUrl);
