@@ -9,7 +9,7 @@ namespace AddressBookWebTests
         [SetUp]
         public void SetupTest()
         {
-            _applicationManager = TestSuiteFixture.applicationManager;
+            _applicationManager = ApplicationManager.GetInstance();
         }
     }
 }
