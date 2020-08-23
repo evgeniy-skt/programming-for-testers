@@ -20,6 +20,21 @@ namespace AddressBookWebTests
             _manager.Navigator.ReturnToGroupsPage();
         }
 
+        public void CreateIfNotExist(GroupData group)
+        {
+            _manager.Navigator.GoToGroupsPage();
+            if (IsGroupExist())
+            {
+                return;
+            }
+
+            _manager.Navigator.GoToGroupsPage();
+            InitGroupCreation();
+            FillGroupForm(group);
+            SubmitGroupCreation();
+            _manager.Navigator.ReturnToGroupsPage();
+        }
+
         public void Modify(int groupIndex, GroupData newData)
         {
             _manager.Navigator.GoToGroupsPage();
@@ -73,6 +88,11 @@ namespace AddressBookWebTests
         private void DeleteGroup()
         {
             Driver.FindElement(By.Name("delete")).Click();
+        }
+
+        public bool IsGroupExist()
+        {
+            return Driver.FindElements(By.ClassName("group")).Count > 0;
         }
     }
 }
