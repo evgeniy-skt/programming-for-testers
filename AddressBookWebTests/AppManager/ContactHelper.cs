@@ -55,10 +55,7 @@ namespace AddressBookWebTests
 
         public bool IsContactExist()
         {
-            _applicationManager.Navigator.ReturnToHomePage();
-            var contactsCount = Driver.FindElement(By.Id("search_count")).Text;
-            var result = Int32.Parse(contactsCount);
-            return result > 0;
+            return Driver.FindElements(By.Name("entry")).Count > 0;
         }
 
         private static void DeleteContact()
