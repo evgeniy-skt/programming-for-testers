@@ -45,7 +45,7 @@ namespace AddressBookWebTests
                 return 1;
             }
 
-            return String.Compare(Name, other.Name, StringComparison.Ordinal);
+            return Name.CompareTo(other.Name);
         }
     }
 }
