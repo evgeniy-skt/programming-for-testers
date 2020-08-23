@@ -1,8 +1,10 @@
+using System;
+
 namespace AddressBookWebTests
 {
-    public class ContactData
+    public class ContactData : IEquatable<ContactData>
     {
-        public string FirstName { get; set; }
+        public string FirstName { get; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
         public string Nick { get; set; }
@@ -28,6 +30,26 @@ namespace AddressBookWebTests
         {
             FirstName = firstName;
             LastName = lastName;
+        }
+
+        public bool Equals(ContactData other)
+        {
+            if (ReferenceEquals(other, null))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
+            return FirstName == other.FirstName && LastName == other.LastName;
+        }
+
+        public override int GetHashCode()
+        {
+            return FirstName.GetHashCode();
         }
     }
 }

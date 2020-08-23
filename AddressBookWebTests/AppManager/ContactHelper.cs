@@ -91,7 +91,7 @@ namespace AddressBookWebTests
 
         private static void SelectContact(int index)
         {
-            Driver.FindElement(By.XPath($"(//input[@name='selected[]'])[{index}]")).Click();
+            Driver.FindElement(By.XPath($"(//input[@name='selected[]'])[{index + 1}]")).Click();
         }
 
         private static void AcceptAlert()
