@@ -1,4 +1,4 @@
-using System;
+using System.Collections.Generic;
 using OpenQA.Selenium;
 
 namespace AddressBookWebTests
@@ -97,6 +97,19 @@ namespace AddressBookWebTests
         private static void AcceptAlert()
         {
             Driver.SwitchTo().Alert().Accept();
+        }
+
+        public List<ContactData> GetContactList()
+        {
+            _applicationManager.Navigator.GoToContactPage();
+            var contacts = new List<ContactData>();
+            var elements = Driver.FindElements(By.Name("entry"));
+            foreach (var element in elements)
+            {
+                contacts.Add(new ContactData(element.Text, element.Text));
+            }
+
+            return contacts;
         }
     }
 }
