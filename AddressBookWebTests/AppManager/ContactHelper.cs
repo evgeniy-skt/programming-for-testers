@@ -1,3 +1,4 @@
+using System;
 using OpenQA.Selenium;
 
 namespace AddressBookWebTests
@@ -13,6 +14,21 @@ namespace AddressBookWebTests
 
         public void Create(ContactData contact)
         {
+            _applicationManager.Navigator.ReturnToHomePage();
+            InitContactCreation();
+            FillContactForm(contact);
+            SubmitContactCreation();
+            _applicationManager.Navigator.ReturnToHomePage();
+        }
+
+        public void CreateIfNotExist(ContactData contact)
+        {
+            _applicationManager.Navigator.ReturnToHomePage();
+            if (IsContactExist())
+            {
+                return;
+            }
+
             InitContactCreation();
             FillContactForm(contact);
             SubmitContactCreation();
@@ -21,7 +37,7 @@ namespace AddressBookWebTests
 
         public static void Modify(int contactIndex, ContactData newData)
         {
-            _applicationManager.Navigator.GoToContactPage();
+            _applicationManager.Navigator.ReturnToHomePage();
             InitContactModification(contactIndex);
             FillContactForm(newData);
             SubmitContactModification();
@@ -30,11 +46,19 @@ namespace AddressBookWebTests
 
         public void Remove(int contactIndex)
         {
-            _applicationManager.Navigator.GoToContactPage();
+            _applicationManager.Navigator.ReturnToHomePage();
             SelectContact(contactIndex);
             DeleteContact();
             AcceptAlert();
             _applicationManager.Navigator.ReturnToHomePage();
+        }
+
+        public bool IsContactExist()
+        {
+            _applicationManager.Navigator.ReturnToHomePage();
+            var contactsCount = Driver.FindElement(By.Id("search_count")).Text;
+            var result = Int32.Parse(contactsCount);
+            return result > 0;
         }
 
         private static void DeleteContact()

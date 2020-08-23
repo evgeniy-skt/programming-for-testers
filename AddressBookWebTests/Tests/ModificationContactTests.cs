@@ -8,8 +8,10 @@ namespace AddressBookWebTests
         [Test]
         public void ModificationContactTest()
         {
-            var newData = new ContactData("Stepan", "Gogoidze");
-            ContactHelper.Modify(2, newData);
+            var newContactData = new ContactData("Stepan", "Gogoidze");
+            var contactData = new ContactData("Gogi", "Stepanidze");
+            _applicationManager.Contact.CreateIfNotExist(contactData);
+            ContactHelper.Modify(2, newContactData);
         }
     }
 }

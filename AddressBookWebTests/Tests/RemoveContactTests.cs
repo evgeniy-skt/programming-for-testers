@@ -8,6 +8,9 @@ namespace AddressBookWebTests
         [Test]
         public void RemoveContactTest()
         {
+            var contactData = new ContactData("Gogi", "Stepanidze");
+            _applicationManager.Contact.CreateIfNotExist(contactData);
+
             _applicationManager.Contact.Remove(1);
         }
     }
