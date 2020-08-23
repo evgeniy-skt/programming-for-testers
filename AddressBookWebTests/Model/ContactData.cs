@@ -2,9 +2,9 @@ using System;
 
 namespace AddressBookWebTests
 {
-    public class ContactData : IEquatable<ContactData>
+    public class ContactData : IEquatable<ContactData>, IComparable<ContactData>
     {
-        public string FirstName { get; }
+        public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
         public string Nick { get; set; }
@@ -50,6 +50,21 @@ namespace AddressBookWebTests
         public override int GetHashCode()
         {
             return FirstName.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return "FirstName " + FirstName + ";" + "LastName " + LastName;
+        }
+
+        public int CompareTo(ContactData other)
+        {
+            if (ReferenceEquals(other, null))
+            {
+                return 1;
+            }
+
+            return FirstName.CompareTo(other.FirstName);
         }
     }
 }

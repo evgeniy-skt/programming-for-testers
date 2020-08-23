@@ -14,7 +14,12 @@ namespace AddressBookWebTests
             _applicationManager.Contact.Create(contact);
 
             var newContacts = _applicationManager.Contact.GetContactList();
-            Assert.AreEqual(oldContacts.Count + 1, newContacts.Count);
+            oldContacts.Add(contact);
+            oldContacts[0].FirstName = contact.FirstName;
+            oldContacts[0].LastName = contact.LastName;
+            oldContacts.Sort();
+            newContacts.Sort();
+            Assert.AreEqual(oldContacts, newContacts);
         }
     }
 }
