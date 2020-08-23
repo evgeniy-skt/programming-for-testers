@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using OpenQA.Selenium;
 
 namespace AddressBookWebTests
@@ -93,6 +94,21 @@ namespace AddressBookWebTests
         public bool IsGroupExist()
         {
             return Driver.FindElements(By.ClassName("group")).Count > 0;
+        }
+
+        public List<GroupData> GetGroupsList()
+        {
+            var groups = new List<GroupData>();
+
+            _manager.Navigator.GoToGroupsPage();
+
+            var elements = Driver.FindElements(By.CssSelector("span.group"));
+            foreach (var element in elements)
+            {
+                groups.Add(new GroupData(element.Text));
+            }
+
+            return groups;
         }
     }
 }
