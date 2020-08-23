@@ -16,7 +16,10 @@ namespace AddressBookWebTests
             _applicationManager.Group.Create(group);
 
             var newGroupsList = _applicationManager.Group.GetGroupsList();
-            Assert.AreEqual(oldGroupsList.Count + 1, newGroupsList.Count);
+            oldGroupsList.Add(group);
+            oldGroupsList.Sort();
+            newGroupsList.Sort();
+            Assert.AreEqual(oldGroupsList, newGroupsList);
         }
 
         [Test]
@@ -30,7 +33,10 @@ namespace AddressBookWebTests
             _applicationManager.Group.Create(group);
 
             var newGroupsList = _applicationManager.Group.GetGroupsList();
-            Assert.AreEqual(oldGroupsList.Count + 1, newGroupsList.Count);
+            oldGroupsList.Add(group);
+            oldGroupsList.Sort();
+            newGroupsList.Sort();
+            Assert.AreEqual(oldGroupsList, newGroupsList);
         }
     }
 }
