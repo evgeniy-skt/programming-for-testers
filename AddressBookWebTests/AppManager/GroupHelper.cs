@@ -83,7 +83,7 @@ namespace AddressBookWebTests
 
         private static void SelectGroup(int index)
         {
-            Driver.FindElement(By.XPath($"(//input[@name='selected[]'])[{index}]")).Click();
+            Driver.FindElement(By.XPath($"(//input[@name='selected[]'])[{index+1}]")).Click();
         }
 
         private void DeleteGroup()

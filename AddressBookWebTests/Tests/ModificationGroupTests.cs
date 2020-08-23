@@ -13,7 +13,7 @@ namespace AddressBookWebTests
             group.Footer = "Group footer";
             var newData = new GroupData("Edited name") {Header = "Edited header", Footer = "Edited footer"};
             _applicationManager.Group.CreateIfNotExist(group);
-            _applicationManager.Group.Modify(1, newData);
+            _applicationManager.Group.Modify(0, newData);
         }
     }
 }
