@@ -6,6 +6,7 @@ namespace AddressBookWebTests
     public class ContactHelper : HelperBase
     {
         private static ApplicationManager _applicationManager;
+        private static List<ContactData> _contactCache;
 
         public ContactHelper(ApplicationManager manager) : base(manager)
         {
@@ -61,16 +62,19 @@ namespace AddressBookWebTests
         private static void DeleteContact()
         {
             Driver.FindElement(By.XPath("//*[@id=\"content\"]/form[2]/div[2]/input")).Click();
+            _contactCache = null;
         }
 
         private static void SubmitContactModification()
         {
             Driver.FindElement(By.Name("update")).Click();
+            _contactCache = null;
         }
 
         private static void SubmitContactCreation()
         {
             Driver.FindElement(By.Name("submit")).Click();
+            _contactCache = null;
         }
 
         private static void InitContactCreation()
@@ -101,15 +105,25 @@ namespace AddressBookWebTests
 
         public List<ContactData> GetContactList()
         {
-            _applicationManager.Navigator.GoToContactPage();
-            var contacts = new List<ContactData>();
-            var elements = Driver.FindElements(By.Name("entry"));
-            foreach (var element in elements)
+            if (_contactCache == null)
             {
-                contacts.Add(new ContactData(element.Text, element.Text));
+                _applicationManager.Navigator.GoToContactPage();
+                _contactCache = new List<ContactData>();
+
+                var elements = Driver.FindElements(By.Name("entry"));
+
+                foreach (var element in elements)
+                {
+                    _contactCache.Add(new ContactData(element.Text, element.Text));
+                }
             }
 
-            return contacts;
+            return _contactCache;
+        }
+
+        public int GetGroupsListCount()
+        {
+            return Driver.FindElements(By.Name("entry")).Count;
         }
     }
 }

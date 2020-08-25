@@ -6,6 +6,7 @@ namespace AddressBookWebTests
     public class GroupHelper : HelperBase
     {
         private static ApplicationManager _manager;
+        private static List<GroupData> _groupCache;
 
         public GroupHelper(ApplicationManager manager) : base(manager)
         {
@@ -49,6 +50,7 @@ namespace AddressBookWebTests
         private static void SubmitGroupModification()
         {
             Driver.FindElement(By.Name("update")).Click();
+            _groupCache = null;
         }
 
         private static void InitGroupModification()
@@ -79,16 +81,18 @@ namespace AddressBookWebTests
         private void SubmitGroupCreation()
         {
             Driver.FindElement(By.Name("submit")).Click();
+            _groupCache = null;
         }
 
         private static void SelectGroup(int index)
         {
-            Driver.FindElement(By.XPath($"(//input[@name='selected[]'])[{index+1}]")).Click();
+            Driver.FindElement(By.XPath($"(//input[@name='selected[]'])[{index + 1}]")).Click();
         }
 
         private void DeleteGroup()
         {
             Driver.FindElement(By.Name("delete")).Click();
+            _groupCache = null;
         }
 
         public bool IsGroupExist()
@@ -98,17 +102,25 @@ namespace AddressBookWebTests
 
         public List<GroupData> GetGroupsList()
         {
-            var groups = new List<GroupData>();
-
-            _manager.Navigator.GoToGroupsPage();
-
-            var elements = Driver.FindElements(By.CssSelector("span.group"));
-            foreach (var element in elements)
+            if (_groupCache == null)
             {
-                groups.Add(new GroupData(element.Text));
+                _groupCache = new List<GroupData>();
+                _manager.Navigator.GoToGroupsPage();
+
+                var elements = Driver.FindElements(By.CssSelector("span.group"));
+                
+                foreach (var element in elements)
+                {
+                    _groupCache.Add(new GroupData(element.Text));
+                }
             }
 
-            return groups;
+            return new List<GroupData>(_groupCache);
+        }
+
+        public int GetGroupsListCount()
+        {
+            return Driver.FindElements(By.CssSelector("span.group")).Count;
         }
     }
 }

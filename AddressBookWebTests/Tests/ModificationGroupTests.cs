@@ -17,6 +17,8 @@ namespace AddressBookWebTests
 
             _applicationManager.Group.Modify(0, newData);
 
+            Assert.AreEqual(oldGroupsList.Count, _applicationManager.Group.GetGroupsListCount());
+
             var newGroupsList = _applicationManager.Group.GetGroupsList();
             oldGroupsList[0].Name = newData.Name;
             oldGroupsList.Sort();

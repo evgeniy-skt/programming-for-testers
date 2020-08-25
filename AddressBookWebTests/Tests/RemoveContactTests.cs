@@ -13,8 +13,10 @@ namespace AddressBookWebTests
             _applicationManager.Contact.CreateIfNotExist(contactData);
 
             _applicationManager.Contact.Remove(0);
+            
+            Assert.AreEqual(oldContacts.Count - 1, _applicationManager.Contact.GetGroupsListCount());
+            
             var newContacts = _applicationManager.Contact.GetContactList();
-
             oldContacts.RemoveAt(0);
             Assert.AreEqual(oldContacts, newContacts);
         }

@@ -12,6 +12,8 @@ namespace AddressBookWebTests
             var oldContacts = _applicationManager.Contact.GetContactList();
 
             _applicationManager.Contact.Create(contact);
+            
+            Assert.AreEqual(oldContacts.Count + 1, _applicationManager.Contact.GetGroupsListCount());
 
             var newContacts = _applicationManager.Contact.GetContactList();
             oldContacts.Add(contact);

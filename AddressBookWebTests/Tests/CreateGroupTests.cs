@@ -15,6 +15,8 @@ namespace AddressBookWebTests
 
             _applicationManager.Group.Create(group);
 
+            Assert.AreEqual(oldGroupsList.Count + 1, _applicationManager.Group.GetGroupsListCount());
+
             var newGroupsList = _applicationManager.Group.GetGroupsList();
             oldGroupsList.Add(group);
             oldGroupsList.Sort();
@@ -31,6 +33,8 @@ namespace AddressBookWebTests
             var oldGroupsList = _applicationManager.Group.GetGroupsList();
 
             _applicationManager.Group.Create(group);
+
+            Assert.AreEqual(oldGroupsList.Count + 1, _applicationManager.Group.GetGroupsListCount());
 
             var newGroupsList = _applicationManager.Group.GetGroupsList();
             oldGroupsList.Add(group);
