@@ -114,7 +114,8 @@ namespace AddressBookWebTests
 
                 foreach (var element in elements)
                 {
-                    _contactCache.Add(new ContactData(element.Text, element.Text));
+                    _contactCache.Add(new ContactData(element.Text, element.Text)
+                        {Id = element.FindElement(By.TagName("input")).GetAttribute("id")});
                 }
             }
 

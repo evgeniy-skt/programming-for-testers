@@ -8,12 +8,11 @@ namespace AddressBookWebTests
         [Test]
         public void ModificationGroupTest()
         {
-            var group = new GroupData("Group name");
-            group.Header = "Group header";
-            group.Footer = "Group footer";
+            var groupData = new GroupData("Group name") {Header = "Group header", Footer = "Group footer"};
             var oldGroupsList = _applicationManager.Group.GetGroupsList();
+            var oldGroupElement = oldGroupsList[0];
             var newData = new GroupData("Edited name") {Header = "Edited header", Footer = "Edited footer"};
-            _applicationManager.Group.CreateIfNotExist(group);
+            _applicationManager.Group.CreateIfNotExist(groupData);
 
             _applicationManager.Group.Modify(0, newData);
 
@@ -24,6 +23,14 @@ namespace AddressBookWebTests
             oldGroupsList.Sort();
             newGroupsList.Sort();
             Assert.AreEqual(oldGroupsList, newGroupsList);
+
+            foreach (var group in newGroupsList)
+            {
+                if (group.Id == oldGroupElement.Id)
+                {
+                    Assert.AreEqual(newData.Name, group.Name);
+                }
+            }
         }
     }
 }

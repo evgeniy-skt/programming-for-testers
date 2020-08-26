@@ -108,10 +108,11 @@ namespace AddressBookWebTests
                 _manager.Navigator.GoToGroupsPage();
 
                 var elements = Driver.FindElements(By.CssSelector("span.group"));
-                
+
                 foreach (var element in elements)
                 {
-                    _groupCache.Add(new GroupData(element.Text));
+                    _groupCache.Add(new GroupData(element.Text)
+                        {Id = element.FindElement(By.TagName("input")).GetAttribute("value")});
                 }
             }
 

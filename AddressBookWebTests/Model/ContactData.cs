@@ -25,6 +25,7 @@ namespace AddressBookWebTests
         public string Group { get; set; }
         public string HomeAddress { get; set; }
         public string Notes { get; set; }
+        public string Id { get; set; }
 
         public ContactData(string firstName, string lastName)
         {
