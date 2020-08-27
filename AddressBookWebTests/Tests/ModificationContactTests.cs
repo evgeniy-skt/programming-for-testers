@@ -31,8 +31,9 @@ namespace AddressBookWebTests
             {
                 if (contact.Id == oldGroupElement.Id)
                 {
-                    Assert.AreEqual(newContactData.FirstName + newContactData.LastName,
+                    Assert.AreEqual(newContactData.FirstName,
                         contact.FirstName);
+                    Assert.AreEqual(newContactData.LastName, contact.LastName);
                 }
             }
         }

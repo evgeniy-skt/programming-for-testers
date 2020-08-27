@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using OpenQA.Selenium;
 
 namespace AddressBookWebTests
@@ -114,7 +115,7 @@ namespace AddressBookWebTests
 
                 foreach (var element in elements)
                 {
-                    _contactCache.Add(new ContactData(element.Text, element.Text)
+                    _contactCache.Add(new ContactData(element.Text.Split(' ').Last(), element.Text.Split(' ').First())
                         {Id = element.FindElement(By.TagName("input")).GetAttribute("id")});
                 }
             }
