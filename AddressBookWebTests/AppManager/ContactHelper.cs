@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using OpenQA.Selenium;
 
 namespace AddressBookWebTests
@@ -16,16 +18,16 @@ namespace AddressBookWebTests
 
         public void Create(ContactData contact)
         {
-            _applicationManager.Navigator.ReturnToHomePage();
+            _applicationManager.Navigator.GoToHomePage();
             InitContactCreation();
             FillContactForm(contact);
             SubmitContactCreation();
-            _applicationManager.Navigator.ReturnToHomePage();
+            _applicationManager.Navigator.GoToHomePage();
         }
 
         public void CreateIfNotExist(ContactData contact)
         {
-            _applicationManager.Navigator.ReturnToHomePage();
+            _applicationManager.Navigator.GoToHomePage();
             if (IsContactExist())
             {
                 return;
@@ -34,25 +36,25 @@ namespace AddressBookWebTests
             InitContactCreation();
             FillContactForm(contact);
             SubmitContactCreation();
-            _applicationManager.Navigator.ReturnToHomePage();
+            _applicationManager.Navigator.GoToHomePage();
         }
 
         public static void Modify(int contactIndex, ContactData newData)
         {
-            _applicationManager.Navigator.ReturnToHomePage();
+            _applicationManager.Navigator.GoToHomePage();
             InitContactModification(contactIndex);
             FillContactForm(newData);
             SubmitContactModification();
-            _applicationManager.Navigator.ReturnToHomePage();
+            _applicationManager.Navigator.GoToHomePage();
         }
 
         public void Remove(int contactIndex)
         {
-            _applicationManager.Navigator.ReturnToHomePage();
+            _applicationManager.Navigator.GoToHomePage();
             SelectContact(contactIndex);
             DeleteContact();
             AcceptAlert();
-            _applicationManager.Navigator.ReturnToHomePage();
+            _applicationManager.Navigator.GoToHomePage();
         }
 
         public bool IsContactExist()
@@ -91,7 +93,10 @@ namespace AddressBookWebTests
 
         private static void InitContactModification(int index)
         {
-            Driver.FindElement(By.XPath($"//*[@id=\"maintable\"]/tbody/tr[{index}]/td[8]/a/img")).Click();
+            Driver.FindElements(By.Name("entry"))[index]
+                .FindElements(By.TagName("td"))[7]
+                .FindElement(By.TagName("a"))
+                .Click();
         }
 
         private static void SelectContact(int index)
@@ -127,6 +132,49 @@ namespace AddressBookWebTests
         public int GetGroupsListCount()
         {
             return Driver.FindElements(By.Name("entry")).Count;
+        }
+
+        public ContactData GetContactInfoFromTable(int index)
+        {
+            _applicationManager.Navigator.GoToHomePage();
+            var cells = Driver.FindElements(By.Name("entry"))[index]
+                .FindElements(By.TagName("td"));
+            var lastName = cells[1].Text;
+            var firstName = cells[2].Text;
+            var address = cells[3].Text;
+            var allPhones = cells[5].Text;
+            return new ContactData(firstName, lastName)
+            {
+                HomeAddress = address,
+                AllPhones = allPhones,
+            };
+        }
+
+        public ContactData GetContactInfoFromEditForm(int index)
+        {
+            _applicationManager.Navigator.GoToHomePage();
+            InitContactModification(0);
+            var firstName = Driver.FindElement(By.Name("firstname")).GetAttribute("value");
+            var lastName = Driver.FindElement(By.Name("lastname")).GetAttribute("value");
+            var address = Driver.FindElement(By.Name("address")).GetAttribute("value");
+            var homePhone = Driver.FindElement(By.Name("home")).GetAttribute("value");
+            var mobilePhone = Driver.FindElement(By.Name("mobile")).GetAttribute("value");
+            var workPhone = Driver.FindElement(By.Name("work")).GetAttribute("value");
+            return new ContactData(firstName, lastName)
+            {
+                HomeAddress = address,
+                HomePhone = homePhone,
+                MobilePhone = mobilePhone,
+                WorkPhone = workPhone,
+            };
+        }
+
+        public int GetNumberOfSearchResult()
+        {
+            _applicationManager.Navigator.GoToHomePage();
+            var text = Driver.FindElement(By.TagName("label")).Text;
+            var match = new Regex(@"\d+").Match(text);
+            return Int32.Parse(match.Value);
         }
     }
 }

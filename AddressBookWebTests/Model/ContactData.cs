@@ -1,9 +1,11 @@
 using System;
+using System.Text.RegularExpressions;
 
 namespace AddressBookWebTests
 {
     public class ContactData : IEquatable<ContactData>, IComparable<ContactData>
     {
+        public string allPhones;
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
@@ -15,6 +17,30 @@ namespace AddressBookWebTests
         public string HomePhone { get; set; }
         public string MobilePhone { get; set; }
         public string WorkPhone { get; set; }
+
+        public string AllPhones
+        {
+            get
+            {
+                if (allPhones != null)
+                {
+                    return allPhones;
+                }
+                else
+                {
+                    return (CleanUp(HomePhone) + CleanUp(MobilePhone) + CleanUp(WorkPhone)).Trim();
+                }
+            }
+            set => allPhones = value;
+        }
+
+        private string CleanUp(string phone)
+        {
+            return string.IsNullOrEmpty(phone)
+                ? ""
+                : Regex.Replace(phone, "[ -()]", "") + "\r\n";
+        }
+
         public string FaxPhone { get; set; }
         public string Email { get; set; }
         public string Email2 { get; set; }

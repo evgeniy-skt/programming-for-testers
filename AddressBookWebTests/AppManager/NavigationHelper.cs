@@ -31,7 +31,7 @@ namespace AddressBookWebTests
             Driver.FindElement(By.LinkText("groups")).Click();
         }
 
-        public void ReturnToHomePage()
+        public void GoToHomePage()
         {
             if (Driver.Url == _baseUrl + "index.php")
             {

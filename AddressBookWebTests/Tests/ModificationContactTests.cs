@@ -16,7 +16,7 @@ namespace AddressBookWebTests
             var oldContacts = _applicationManager.Contact.GetContactList();
             var oldGroupElement = oldContacts[0];
 
-            ContactHelper.Modify(2, newContactData);
+            ContactHelper.Modify(1, newContactData);
 
             Assert.AreEqual(oldContacts.Count, _applicationManager.Contact.GetGroupsListCount());
 

@@ -17,8 +17,6 @@ namespace AddressBookWebTests
 
             var newContacts = _applicationManager.Contact.GetContactList();
             oldContacts.Add(contact);
-            oldContacts[0].FirstName = contact.FirstName;
-            oldContacts[0].LastName = contact.LastName;
             oldContacts.Sort();
             newContacts.Sort();
             Assert.AreEqual(oldContacts, newContacts);
