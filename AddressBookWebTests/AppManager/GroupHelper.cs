@@ -111,8 +111,16 @@ namespace AddressBookWebTests
 
                 foreach (var element in elements)
                 {
-                    _groupCache.Add(new GroupData(element.Text)
+                    _groupCache.Add(new GroupData(null)
                         {Id = element.FindElement(By.TagName("input")).GetAttribute("value")});
+                }
+
+                var allGroupsName = Driver.FindElement(By.CssSelector("div#content form")).Text;
+                var parts = allGroupsName.Split("\n");
+                var shift = _groupCache.Count - parts.Length;
+                for (var i = 0; i < _groupCache.Count; i++)
+                {
+                    _groupCache[i].Name = i < shift ? "" : parts[i - shift].Trim();
                 }
             }
 
