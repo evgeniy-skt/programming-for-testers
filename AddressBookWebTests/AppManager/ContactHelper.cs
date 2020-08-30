@@ -89,6 +89,10 @@ namespace AddressBookWebTests
         {
             Type(By.Name("firstname"), contact.FirstName);
             Type(By.Name("lastname"), contact.LastName);
+            Type(By.Name("address"), contact.HomeAddress);
+            Type(By.Name("home"), contact.HomePhone);
+            Type(By.Name("mobile"), contact.MobilePhone);
+            Type(By.Name("work"), contact.WorkPhone);
         }
 
         private static void InitContactModification(int index)

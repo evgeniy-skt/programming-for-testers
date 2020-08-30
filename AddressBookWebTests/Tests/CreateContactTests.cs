@@ -8,11 +8,17 @@ namespace AddressBookWebTests
         [Test]
         public void CreateContactTest()
         {
-            var contact = new ContactData("Gogi", "Stepanidze");
+            var contact = new ContactData("Gogi", "Stepanidze")
+            {
+                HomeAddress = "Lenyna str, 25b, 15ap",
+                MobilePhone = "+79091234567",
+                HomePhone = "+74951234567",
+                WorkPhone = "+74957654321"
+            };
             var oldContacts = _applicationManager.Contact.GetContactList();
 
             _applicationManager.Contact.Create(contact);
-            
+
             Assert.AreEqual(oldContacts.Count + 1, _applicationManager.Contact.GetGroupsListCount());
 
             var newContacts = _applicationManager.Contact.GetContactList();

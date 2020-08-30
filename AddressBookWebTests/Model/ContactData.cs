@@ -38,7 +38,7 @@ namespace AddressBookWebTests
         {
             return string.IsNullOrEmpty(phone)
                 ? ""
-                : Regex.Replace(phone, "[ -()]", "") + "\r\n";
+                : Regex.Replace(phone, "[ -()]", "") + "\n";
         }
 
         public string FaxPhone { get; set; }
