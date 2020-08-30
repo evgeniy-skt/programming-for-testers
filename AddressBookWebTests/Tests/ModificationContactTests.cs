@@ -10,10 +10,11 @@ namespace AddressBookWebTests
         {
             var newContactData = new ContactData("Stepan", "Gogoidze");
             var contactData = new ContactData("Gogi", "Stepanidze");
-            var oldContacts = _applicationManager.Contact.GetContactList();
-            var oldGroupElement = oldContacts[0];
 
             _applicationManager.Contact.CreateIfNotExist(contactData);
+            
+            var oldContacts = _applicationManager.Contact.GetContactList();
+            var oldGroupElement = oldContacts[0];
 
             ContactHelper.Modify(2, newContactData);
 
