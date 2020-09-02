@@ -5,7 +5,8 @@ namespace AddressBookWebTests
 {
     public class ContactData : IEquatable<ContactData>, IComparable<ContactData>
     {
-        public string allPhones;
+        private string _allPhones;
+        private string _allData;
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
@@ -22,16 +23,22 @@ namespace AddressBookWebTests
         {
             get
             {
-                if (allPhones != null)
+                if (_allPhones != null)
                 {
-                    return allPhones;
+                    return _allPhones;
                 }
                 else
                 {
                     return (CleanUp(HomePhone) + CleanUp(MobilePhone) + CleanUp(WorkPhone)).Trim();
                 }
             }
-            set => allPhones = value;
+            set => _allPhones = value;
+        }
+
+        public string AllData
+        {
+            get => _allData ?? (CleanUp(HomePhone) + CleanUp(MobilePhone) + CleanUp(WorkPhone)).Trim();
+            set => _allData = value;
         }
 
         private string CleanUp(string phone)
@@ -81,6 +88,7 @@ namespace AddressBookWebTests
 
         public override string ToString()
         {
+            //todo поменять местами параметры
             return "FirstName " + FirstName + ";" + "LastName " + LastName;
         }
 
@@ -91,7 +99,15 @@ namespace AddressBookWebTests
                 return 1;
             }
 
-            return FirstName.CompareTo(other.FirstName);
+            if (ReferenceEquals(other.LastName, LastName))
+            {
+                if (ReferenceEquals(other.FirstName, FirstName))
+                {
+                    return string.Compare(FirstName, other.FirstName, StringComparison.Ordinal);
+                }
+            }
+
+            return string.Compare(LastName, other.LastName, StringComparison.Ordinal);
         }
     }
 }
