@@ -162,19 +162,27 @@ namespace AddressBookWebTests
         public ContactData GetContactInfoFromEditForm(int index)
         {
             _applicationManager.Navigator.GoToHomePage();
-            InitContactModification(0);
+            InitContactModification(index);
             var firstName = Driver.FindElement(By.Name("firstname")).GetAttribute("value");
             var lastName = Driver.FindElement(By.Name("lastname")).GetAttribute("value");
             var address = Driver.FindElement(By.Name("address")).GetAttribute("value");
             var homePhone = Driver.FindElement(By.Name("home")).GetAttribute("value");
             var mobilePhone = Driver.FindElement(By.Name("mobile")).GetAttribute("value");
             var workPhone = Driver.FindElement(By.Name("work")).GetAttribute("value");
+            var email = Driver.FindElement(By.Name("email")).GetAttribute("value");
+            var email2 = Driver.FindElement(By.Name("email2")).GetAttribute("value");
+            var email3 = Driver.FindElement(By.Name("email3")).GetAttribute("value");
             return new ContactData(firstName, lastName)
             {
                 HomeAddress = address,
                 HomePhone = homePhone,
                 MobilePhone = mobilePhone,
                 WorkPhone = workPhone,
+                Email = email,
+                Email2 = email2,
+                Email3 = email3,
+                AllData = firstName + " " + lastName + "\n" + address + "\n\n" + "H: " + homePhone + "\n" + "M: " +
+                          mobilePhone + "\n" + "W: " + workPhone + "\n\n" + email + "\n" + email2 + "\n" + email3,
             };
         }
 
@@ -184,6 +192,21 @@ namespace AddressBookWebTests
             var text = Driver.FindElement(By.TagName("label")).Text;
             var match = new Regex(@"\d+").Match(text);
             return Int32.Parse(match.Value);
+        }
+
+        public ContactData GetContactInfoFromDetailInfo()
+        {
+            _applicationManager.Navigator.GoToHomePage();
+            Driver.FindElement(By.CssSelector("#maintable > tbody > tr:nth-child(2) > td:nth-child(7) > a > img"))
+                .Click();
+            var detaiLedInfo = Driver.FindElement(By.Id("content"));
+            var lastNameAndFirstName = Driver.FindElement(By.CssSelector("#content > b"));
+            var text = detaiLedInfo.Text;
+            return new ContactData(lastNameAndFirstName.Text.Split(' ').First(),
+                lastNameAndFirstName.Text.Split(' ').Last())
+            {
+                AllData = text,
+            };
         }
     }
 }

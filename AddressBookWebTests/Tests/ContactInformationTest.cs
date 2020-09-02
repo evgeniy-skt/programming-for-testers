@@ -16,5 +16,15 @@ namespace AddressBookWebTests
             Assert.AreEqual(fromTable.AllPhones, fromFrom.AllPhones);
             Assert.AreEqual(fromTable.AllEmails, fromFrom.AllEmails);
         }
+
+        [Test]
+        public void DetailContactInformationTest()
+        {
+            var fromForm = _applicationManager.Contact.GetContactInfoFromEditForm(0);
+            var fromDetailInfo = _applicationManager.Contact.GetContactInfoFromDetailInfo();
+
+            Assert.AreEqual(fromDetailInfo, fromForm);
+            Assert.AreEqual(fromDetailInfo.AllData, fromForm.AllData);
+        }
     }
 }
