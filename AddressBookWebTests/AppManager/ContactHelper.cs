@@ -93,6 +93,9 @@ namespace AddressBookWebTests
             Type(By.Name("home"), contact.HomePhone);
             Type(By.Name("mobile"), contact.MobilePhone);
             Type(By.Name("work"), contact.WorkPhone);
+            Type(By.Name("email"), contact.Email);
+            Type(By.Name("email2"), contact.Email2);
+            Type(By.Name("email3"), contact.Email3);
         }
 
         private static void InitContactModification(int index)
@@ -147,10 +150,12 @@ namespace AddressBookWebTests
             var firstName = cells[2].Text;
             var address = cells[3].Text;
             var allPhones = cells[5].Text;
+            var emails = cells[6].Text;
             return new ContactData(firstName, lastName)
             {
                 HomeAddress = address,
                 AllPhones = allPhones,
+                AllEmails = emails,
             };
         }
 

@@ -7,6 +7,7 @@ namespace AddressBookWebTests
     {
         private string _allPhones;
         private string _allData;
+        private string _allEmails;
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
@@ -27,12 +28,24 @@ namespace AddressBookWebTests
                 {
                     return _allPhones;
                 }
-                else
-                {
-                    return (CleanUp(HomePhone) + CleanUp(MobilePhone) + CleanUp(WorkPhone)).Trim();
-                }
+
+                return (CleanUp(HomePhone) + CleanUp(MobilePhone) + CleanUp(WorkPhone)).Trim();
             }
             set => _allPhones = value;
+        }
+
+        public string AllEmails
+        {
+            get
+            {
+                if (_allEmails != null)
+                {
+                    return _allEmails;
+                }
+
+                return Email + Email2 + Email3;
+            }
+            set => _allEmails = value;
         }
 
         public string AllData

@@ -14,6 +14,7 @@ namespace AddressBookWebTests
             Assert.AreEqual(fromTable, fromFrom);
             Assert.AreEqual(fromTable.HomeAddress, fromFrom.HomeAddress);
             Assert.AreEqual(fromTable.AllPhones, fromFrom.AllPhones);
+            Assert.AreEqual(fromTable.AllEmails, fromFrom.AllEmails);
         }
     }
 }
