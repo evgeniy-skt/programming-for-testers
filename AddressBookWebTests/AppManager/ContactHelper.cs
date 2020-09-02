@@ -149,8 +149,9 @@ namespace AddressBookWebTests
             var lastName = cells[1].Text;
             var firstName = cells[2].Text;
             var address = cells[3].Text;
+            var emails = cells[4].Text;
             var allPhones = cells[5].Text;
-            var emails = cells[6].Text;
+
             return new ContactData(firstName, lastName)
             {
                 HomeAddress = address,
@@ -178,9 +179,7 @@ namespace AddressBookWebTests
                 HomePhone = homePhone,
                 MobilePhone = mobilePhone,
                 WorkPhone = workPhone,
-                Email = email,
-                Email2 = email2,
-                Email3 = email3,
+                AllEmails = email + "\n" + email2 + "\n" + email3,
                 AllData = firstName + " " + lastName + "\n" + address + "\n\n" + "H: " + homePhone + "\n" + "M: " +
                           mobilePhone + "\n" + "W: " + workPhone + "\n\n" + email + "\n" + email2 + "\n" + email3,
             };
