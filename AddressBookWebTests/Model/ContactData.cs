@@ -77,7 +77,7 @@ namespace AddressBookWebTests
                 ? ""
                 : Regex.Replace(phone, "[ -()]", "") + "\n";
         }
-        
+
         public bool Equals(ContactData other)
         {
             if (ReferenceEquals(other, null))
@@ -111,15 +111,12 @@ namespace AddressBookWebTests
                 return 1;
             }
 
-            if (ReferenceEquals(other.LastName, LastName))
+            if (LastName.CompareTo(other.LastName) == 0)
             {
-                if (ReferenceEquals(other.FirstName, FirstName))
-                {
-                    return string.Compare(FirstName, other.FirstName, StringComparison.Ordinal);
-                }
+                return LastName.CompareTo(other.LastName);
             }
 
-            return string.Compare(LastName, other.LastName, StringComparison.Ordinal);
+            return FirstName.CompareTo(other.FirstName);
         }
     }
 }
