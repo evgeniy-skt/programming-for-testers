@@ -33,19 +33,44 @@ namespace AddressBookWebTests
 
         public string AllPhones
         {
-            get => _allPhones ?? (PhoneCleanUp(HomePhone) + PhoneCleanUp(MobilePhone) + PhoneCleanUp(WorkPhone)).Trim();
+            get
+            {
+                if (_allPhones != null || _allPhones == "")
+                {
+                    return _allPhones;
+                }
+
+                return (PhoneCleanUp(HomePhone) + PhoneCleanUp(MobilePhone) + PhoneCleanUp(WorkPhone)).Trim();
+            }
             set => _allPhones = value;
         }
 
         public string AllEmails
         {
-            get => _allEmails ?? (EmailCleanUp(Email) + EmailCleanUp(Email2) + EmailCleanUp(Email3)).Trim();
+            get
+            {
+                if (_allEmails != null || _allEmails == "")
+                {
+                    return _allEmails;
+                }
+
+                return (EmailCleanUp(Email) + EmailCleanUp(Email2) + EmailCleanUp(Email3)).Trim();
+            }
             set => _allEmails = value;
         }
 
         public string AllData
         {
-            get => _allData ?? (PhoneCleanUp(HomePhone) + PhoneCleanUp(MobilePhone) + PhoneCleanUp(WorkPhone)).Trim();
+            get
+            {
+                if (_allData != null || _allData == "")
+                {
+                    return _allData;
+                }
+
+                return (PhoneCleanUp(HomePhone) + PhoneCleanUp(MobilePhone) + PhoneCleanUp(WorkPhone)).Trim() +
+                       (EmailCleanUp(Email) + EmailCleanUp(Email2) + EmailCleanUp(Email3)).Trim();
+            }
             set => _allData = value;
         }
 
