@@ -13,13 +13,13 @@ namespace AddressBookWebTests
             {
                 groups.Add(new ContactData(GenerateRandomString(30), GenerateRandomString(30))
                 {
-                    HomeAddress = GenerateRandomString(120),
-                    Email = GenerateRandomString(12),
-                    Email2 = GenerateRandomString(13),
-                    Email3 = GenerateRandomString(14),
-                    HomePhone = GenerateRandomString(11),
-                    WorkPhone = GenerateRandomString(11),
-                    MobilePhone = GenerateRandomString(11)
+                    HomeAddress = "Lenyna str, 25b, 15ap",
+                    MobilePhone = "+79091234567",
+                    HomePhone = "+74951234567",
+                    WorkPhone = "+74957654321",
+                    Email = "ivanov@mail.ru",
+                    Email2 = "ivan@mail.ru",
+                    Email3 = "ivanovich@mail.ru",
                 });
             }
 

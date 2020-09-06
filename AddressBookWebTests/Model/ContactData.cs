@@ -33,35 +33,19 @@ namespace AddressBookWebTests
 
         public string AllPhones
         {
-            get
-            {
-                if (_allPhones != null)
-                {
-                    return _allPhones;
-                }
-
-                return (CleanUp(HomePhone) + CleanUp(MobilePhone) + CleanUp(WorkPhone)).Trim();
-            }
+            get => _allPhones ?? (PhoneCleanUp(HomePhone) + PhoneCleanUp(MobilePhone) + PhoneCleanUp(WorkPhone)).Trim();
             set => _allPhones = value;
         }
 
         public string AllEmails
         {
-            get
-            {
-                if (_allEmails != null)
-                {
-                    return _allEmails;
-                }
-
-                return Email + Email2 + Email3;
-            }
+            get => _allEmails ?? (EmailCleanUp(Email) + EmailCleanUp(Email2) + EmailCleanUp(Email3)).Trim();
             set => _allEmails = value;
         }
 
         public string AllData
         {
-            get => _allData ?? (CleanUp(HomePhone) + CleanUp(MobilePhone) + CleanUp(WorkPhone)).Trim();
+            get => _allData ?? (PhoneCleanUp(HomePhone) + PhoneCleanUp(MobilePhone) + PhoneCleanUp(WorkPhone)).Trim();
             set => _allData = value;
         }
 
@@ -71,11 +55,18 @@ namespace AddressBookWebTests
             LastName = lastName;
         }
 
-        private string CleanUp(string phone)
+        private string PhoneCleanUp(string phone)
         {
             return string.IsNullOrEmpty(phone)
                 ? ""
                 : Regex.Replace(phone, "[ -()]", "") + "\n";
+        }
+
+        private string EmailCleanUp(string email)
+        {
+            return string.IsNullOrEmpty(email)
+                ? ""
+                : Regex.Replace(email, "[ ]", "") + "\n";
         }
 
         public bool Equals(ContactData other)
