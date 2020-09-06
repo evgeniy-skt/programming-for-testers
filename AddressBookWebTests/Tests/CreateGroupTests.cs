@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using NUnit.Framework;
 
 namespace AddressBookWebTests
@@ -5,31 +7,24 @@ namespace AddressBookWebTests
     [TestFixture]
     public class CreateGroupTests : AuthTestBase
     {
-        [Test]
-        public void CreateGroupTest()
+        public static IEnumerable<GroupData> RandomGroupDataProvider()
         {
-            var group = new GroupData("Group name");
-            group.Header = "Group header";
-            group.Footer = "Group footer";
-            var oldGroupsList = _applicationManager.Group.GetGroupsList();
+            var groups = new List<GroupData>();
+            for (var i = 0; i < 5; i++)
+            {
+                groups.Add(new GroupData(GenerateRandomString(30))
+                {
+                    Header = GenerateRandomString(100),
+                    Footer = GenerateRandomString(100),
+                });
+            }
 
-            _applicationManager.Group.Create(group);
-
-            Assert.AreEqual(oldGroupsList.Count + 1, _applicationManager.Group.GetGroupsListCount());
-
-            var newGroupsList = _applicationManager.Group.GetGroupsList();
-            oldGroupsList.Add(group);
-            oldGroupsList.Sort();
-            newGroupsList.Sort();
-            Assert.AreEqual(oldGroupsList, newGroupsList);
+            return groups;
         }
 
-        [Test]
-        public void CreateGroupWithEmptyFieldsTest()
+        [Test, TestCaseSource(nameof(RandomGroupDataProvider))]
+        public void CreateGroupTest(GroupData group)
         {
-            var group = new GroupData("");
-            group.Header = "";
-            group.Footer = "";
             var oldGroupsList = _applicationManager.Group.GetGroupsList();
 
             _applicationManager.Group.Create(group);

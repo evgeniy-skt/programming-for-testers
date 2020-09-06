@@ -19,6 +19,17 @@ namespace AddressBookWebTests
         public string HomePhone { get; set; }
         public string MobilePhone { get; set; }
         public string WorkPhone { get; set; }
+        public string FaxPhone { get; set; }
+        public string Email { get; set; }
+        public string Email2 { get; set; }
+        public string Email3 { get; set; }
+        public string HomePage { get; set; }
+        public string Birthday { get; set; }
+        public string Anniversary { get; set; }
+        public string Group { get; set; }
+        public string HomeAddress { get; set; }
+        public string Notes { get; set; }
+        public string Id { get; set; }
 
         public string AllPhones
         {
@@ -54,31 +65,19 @@ namespace AddressBookWebTests
             set => _allData = value;
         }
 
-        private string CleanUp(string phone)
-        {
-            return string.IsNullOrEmpty(phone)
-                ? ""
-                : Regex.Replace(phone, "[ -()]", "") + "\n";
-        }
-
-        public string FaxPhone { get; set; }
-        public string Email { get; set; }
-        public string Email2 { get; set; }
-        public string Email3 { get; set; }
-        public string HomePage { get; set; }
-        public string Birthday { get; set; }
-        public string Anniversary { get; set; }
-        public string Group { get; set; }
-        public string HomeAddress { get; set; }
-        public string Notes { get; set; }
-        public string Id { get; set; }
-
         public ContactData(string firstName, string lastName)
         {
             FirstName = firstName;
             LastName = lastName;
         }
 
+        private string CleanUp(string phone)
+        {
+            return string.IsNullOrEmpty(phone)
+                ? ""
+                : Regex.Replace(phone, "[ -()]", "") + "\n";
+        }
+        
         public bool Equals(ContactData other)
         {
             if (ReferenceEquals(other, null))
