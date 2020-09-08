@@ -129,10 +129,10 @@ namespace AddressBookWebTests
 
             if (LastName.CompareTo(other.LastName) == 0)
             {
-                return LastName.CompareTo(other.LastName);
+                return FirstName.CompareTo(other.FirstName);
             }
 
-            return FirstName.CompareTo(other.FirstName);
+            return LastName.CompareTo(other.LastName);
         }
     }
 }
