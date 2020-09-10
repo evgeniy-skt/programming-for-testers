@@ -74,6 +74,10 @@ namespace AddressBookWebTests
             set => _allData = value;
         }
 
+        public ContactData()
+        {
+        }
+
         public ContactData(string firstName, string lastName)
         {
             FirstName = firstName;
