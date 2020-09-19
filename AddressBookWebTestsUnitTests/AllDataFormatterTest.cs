@@ -321,5 +321,32 @@ namespace AddressBookWebTestsUnitTests
             };
             Assert.AreEqual(expectedResult.AllData, actualResult.AllData);
         }
+
+
+        [Test]
+        [TestCase("", "", "", "", "", "", "")]
+        public void WhenAllFieldIsEmptyShouldReturnCorrectString(string homeAddress, string homePhone,
+            string mobilePhone,
+            string workPhone, string email,
+            string email2, string email3)
+        {
+            var contact = new ContactData("Stepanov", "Stepan")
+            {
+                HomeAddress = homeAddress,
+                HomePhone = homePhone,
+                WorkPhone = workPhone,
+                MobilePhone = mobilePhone,
+                Email = email,
+                Email2 = email2,
+                Email3 = email3,
+                AllData = "",
+            };
+            var actualResult = ContactInformationTest.AllDataFormatter(contact);
+            var expectedResult = new ContactData("Stepanov", "Stepan")
+            {
+                AllData = "Stepanov Stepan"
+            };
+            Assert.AreEqual(expectedResult.AllData, actualResult.AllData);
+        }
     }
 }

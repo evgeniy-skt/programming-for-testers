@@ -31,13 +31,14 @@ namespace AddressBookWebTests
 
         public static ContactData AllDataFormatter(ContactData fromForm)
         {
-            if (string.IsNullOrEmpty(fromForm.HomeAddress))
+            if (string.IsNullOrEmpty(fromForm.Email) && string.IsNullOrEmpty(fromForm.Email2) &&
+                string.IsNullOrEmpty(fromForm.Email3) && string.IsNullOrEmpty(fromForm.HomePhone) &&
+                string.IsNullOrEmpty(fromForm.MobilePhone) && string.IsNullOrEmpty(fromForm.WorkPhone) &&
+                string.IsNullOrEmpty(fromForm.HomeAddress))
             {
                 return new ContactData(fromForm.FirstName, fromForm.LastName)
                 {
-                    AllData = fromForm.FirstName + " " + fromForm.LastName + "\n" + "H: " + fromForm.HomePhone + "\n" +
-                              "M: " + fromForm.MobilePhone + "\n" + "W: " + fromForm.WorkPhone + "\n\n" +
-                              fromForm.Email + "\n" + fromForm.Email2 + "\n" + fromForm.Email3,
+                    AllData = fromForm.FirstName + " " + fromForm.LastName
                 };
             }
 
@@ -60,6 +61,16 @@ namespace AddressBookWebTests
                               "H: " +
                               fromForm.HomePhone + "\n" + "M: " + fromForm.MobilePhone + "\n" + "W: " +
                               fromForm.WorkPhone
+                };
+            }
+
+            if (string.IsNullOrEmpty(fromForm.HomeAddress))
+            {
+                return new ContactData(fromForm.FirstName, fromForm.LastName)
+                {
+                    AllData = fromForm.FirstName + " " + fromForm.LastName + "\n" + "H: " + fromForm.HomePhone + "\n" +
+                              "M: " + fromForm.MobilePhone + "\n" + "W: " + fromForm.WorkPhone + "\n\n" +
+                              fromForm.Email + "\n" + fromForm.Email2 + "\n" + fromForm.Email3,
                 };
             }
 
