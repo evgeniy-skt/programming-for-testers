@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Xml.Serialization;
@@ -7,7 +8,7 @@ using NUnit.Framework;
 namespace AddressBookWebTests
 {
     [TestFixture]
-    public class CreateGroupTests : AuthTestBase
+    public class CreateGroupTests : GroupTestBase
     {
         public static IEnumerable<GroupData> RandomGroupDataProvider()
         {
@@ -55,17 +56,31 @@ namespace AddressBookWebTests
         [Test, TestCaseSource(nameof(GroupDataFromJSONFile))]
         public void CreateGroupTest(GroupData group)
         {
-            var oldGroupsList = _applicationManager.Group.GetGroupsList();
+            var oldGroupsList = GroupData.GetAll();
 
             _applicationManager.Group.Create(group);
 
             Assert.AreEqual(oldGroupsList.Count + 1, _applicationManager.Group.GetGroupsListCount());
 
-            var newGroupsList = _applicationManager.Group.GetGroupsList();
+            var newGroupsList = GroupData.GetAll();
             oldGroupsList.Add(group);
             oldGroupsList.Sort();
             newGroupsList.Sort();
             Assert.AreEqual(oldGroupsList, newGroupsList);
+        }
+
+        [Test]
+        public void TestDBConnection()
+        {
+            var startFromUI = DateTime.Now;
+            var fromUI = _applicationManager.Group.GetGroupsList();
+            var endFromUI = DateTime.Now;
+            Console.WriteLine(endFromUI.Subtract(startFromUI));
+
+            var startFromDB = DateTime.Now;
+            var fromDB = GroupData.GetAll();
+            var endFromDB = DateTime.Now;
+            Console.WriteLine(endFromDB.Subtract(startFromDB));
         }
     }
 }

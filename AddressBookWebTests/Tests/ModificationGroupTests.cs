@@ -3,13 +3,13 @@ using NUnit.Framework;
 namespace AddressBookWebTests
 {
     [TestFixture]
-    public class ModificationGroupTests : AuthTestBase
+    public class ModificationGroupTests : GroupTestBase
     {
         [Test]
         public void ModificationGroupTest()
         {
             var groupData = new GroupData("Group name") {Header = "Group header", Footer = "Group footer"};
-            var oldGroupsList = _applicationManager.Group.GetGroupsList();
+            var oldGroupsList = GroupData.GetAll();
             var oldGroupElement = oldGroupsList[0];
             var newData = new GroupData("Edited name") {Header = "Edited header", Footer = "Edited footer"};
             _applicationManager.Group.CreateIfNotExist(groupData);
@@ -18,7 +18,7 @@ namespace AddressBookWebTests
 
             Assert.AreEqual(oldGroupsList.Count, _applicationManager.Group.GetGroupsListCount());
 
-            var newGroupsList = _applicationManager.Group.GetGroupsList();
+            var newGroupsList = GroupData.GetAll();
             oldGroupsList[0].Name = newData.Name;
             oldGroupsList.Sort();
             newGroupsList.Sort();

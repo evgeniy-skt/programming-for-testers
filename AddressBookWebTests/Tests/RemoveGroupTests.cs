@@ -3,21 +3,21 @@ using NUnit.Framework;
 namespace AddressBookWebTests
 {
     [TestFixture]
-    public class RemoveGroupTests : AuthTestBase
+    public class RemoveGroupTests : GroupTestBase
     {
         [Test]
         public void RemoveGroupTest()
         {
             var groupData = new GroupData("Group name") {Header = "Group header", Footer = "Group footer"};
-            var oldGroupsList = _applicationManager.Group.GetGroupsList();
+            var oldGroupsList = GroupData.GetAll();
+            var toBeRemoved = oldGroupsList[0];
             _applicationManager.Group.CreateIfNotExist(groupData);
 
-            _applicationManager.Group.Remove(0);
+            _applicationManager.Group.Remove(toBeRemoved);
 
             Assert.AreEqual(oldGroupsList.Count - 1, _applicationManager.Group.GetGroupsListCount());
 
-            var newGroupsList = _applicationManager.Group.GetGroupsList();
-            var toBeRemoved = oldGroupsList[0];
+            var newGroupsList = GroupData.GetAll();
             oldGroupsList.RemoveAt(0);
             Assert.AreEqual(oldGroupsList, newGroupsList);
 

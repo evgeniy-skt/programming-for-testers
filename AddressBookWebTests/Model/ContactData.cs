@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 
 namespace AddressBookWebTests
@@ -137,6 +139,14 @@ namespace AddressBookWebTests
             }
 
             return LastName.CompareTo(other.LastName);
+        }
+
+        public static List<ContactData> GetAll()
+        {
+            using (var db = new AddressBookDb())
+            {
+                return (from c in db.Contacts select c).ToList();
+            }
         }
     }
 }

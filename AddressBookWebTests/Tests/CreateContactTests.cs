@@ -40,7 +40,7 @@ namespace AddressBookWebTests
             return groups;
         }
 
-        [Test, TestCaseSource(nameof(GroupDataFromXMLFile))]
+        [Test, TestCaseSource(nameof(GroupDataFromJSONFile))]
         public void CreateContactTest(ContactData contact)
         {
             var oldContacts = _applicationManager.Contact.GetContactList();

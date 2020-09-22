@@ -1,13 +1,21 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using LinqToDB.Data;
+using LinqToDB.Mapping;
 
 namespace AddressBookWebTests
 {
+    [Table(Name = "group_list")]
     public class GroupData : IEquatable<GroupData>, IComparable<GroupData>
     {
-        public string Name { get; set; }
+        [Column(Name = "group_name")] public string Name { get; set; }
+
+        [Column(Name = "group_id"), PrimaryKey, Identity]
         public string Id { get; set; }
-        public string Header { get; set; }
-        public string Footer { get; set; }
+
+        [Column(Name = "group_header")] public string Header { get; set; }
+        [Column(Name = "group_footer")] public string Footer { get; set; }
 
         public GroupData(string name)
         {
@@ -51,6 +59,15 @@ namespace AddressBookWebTests
             }
 
             return Name.CompareTo(other.Name);
+        }
+
+        public static List<GroupData> GetAll()
+        {
+            DataConnection.DefaultSettings = new MySettings();
+            var db = new AddressBookDb();
+            var fromDB = (from g in db.Groups select g).ToList();
+            db.Close();
+            return fromDB;
         }
     }
 }

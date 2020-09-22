@@ -66,6 +66,14 @@ namespace AddressBookWebTests
             _manager.Navigator.ReturnToGroupsPage();
         }
 
+        public void Remove(GroupData group)
+        {
+            _manager.Navigator.GoToGroupsPage();
+            SelectGroup(group.Id);
+            DeleteGroup();
+            _manager.Navigator.ReturnToGroupsPage();
+        }
+
         private void InitGroupCreation()
         {
             Driver.FindElement(By.Name("new")).Click();
@@ -87,6 +95,11 @@ namespace AddressBookWebTests
         private static void SelectGroup(int index)
         {
             Driver.FindElement(By.XPath($"(//input[@name='selected[]'])[{index + 1}]")).Click();
+        }
+
+        private static void SelectGroup(string id)
+        {
+            Driver.FindElement(By.XPath($"(//input[@name='selected[]' and @value='" + id + "'])")).Click();
         }
 
         private void DeleteGroup()
