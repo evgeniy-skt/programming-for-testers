@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using LinqToDB.Data;
 
 namespace AddressBookWebTests
 {
@@ -143,10 +144,11 @@ namespace AddressBookWebTests
 
         public static List<ContactData> GetAll()
         {
-            using (var db = new AddressBookDb())
-            {
-                return (from c in db.Contacts select c).ToList();
-            }
+            DataConnection.DefaultSettings = new MySettings();
+            var db = new AddressBookDb();
+            var fromDB = (from c in db.Contacts select c).ToList();
+            db.Close();
+            return fromDB;
         }
     }
 }
