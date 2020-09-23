@@ -43,13 +43,13 @@ namespace AddressBookWebTests
         [Test, TestCaseSource(nameof(GroupDataFromJSONFile))]
         public void CreateContactTest(ContactData contact)
         {
-            var oldContacts = _applicationManager.Contact.GetContactList();
+            var oldContacts = ContactData.GetAll();
 
             _applicationManager.Contact.Create(contact);
 
             Assert.AreEqual(oldContacts.Count + 1, _applicationManager.Contact.GetGroupsListCount());
 
-            var newContacts = _applicationManager.Contact.GetContactList();
+            var newContacts = ContactData.GetAll();
             oldContacts.Add(contact);
             oldContacts.Sort();
             newContacts.Sort();

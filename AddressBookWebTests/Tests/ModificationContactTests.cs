@@ -13,14 +13,14 @@ namespace AddressBookWebTests
 
             _applicationManager.Contact.CreateIfNotExist(contactData);
             
-            var oldContacts = _applicationManager.Contact.GetContactList();
+            var oldContacts = ContactData.GetAll();
             var oldGroupElement = oldContacts[0];
 
             ContactHelper.Modify(1, newContactData);
 
             Assert.AreEqual(oldContacts.Count, _applicationManager.Contact.GetGroupsListCount());
 
-            var newContacts = _applicationManager.Contact.GetContactList();
+            var newContacts = ContactData.GetAll();
             oldContacts[0].FirstName = newContactData.FirstName;
             oldContacts[0].LastName = newContactData.LastName;
             oldContacts.Sort();
