@@ -242,5 +242,27 @@ namespace AddressBookWebTests
         {
             new SelectElement(Driver.FindElement(By.Name("group"))).SelectByText("[all]");
         }
+
+        public void RemoveContactFromGroup(ContactData contact, GroupData group)
+        {
+            SelectGroupToRemove(group.Name);
+            SelectContactToRemove(contact.Id);
+            ConfirmRemoveContact();
+        }
+
+        private void ConfirmRemoveContact()
+        {
+            Driver.FindElement(By.Name("remove")).Click();
+        }
+
+        private void SelectContactToRemove(string contactId)
+        {
+            Driver.FindElement(By.Id(contactId)).Click();
+        }
+
+        private void SelectGroupToRemove(string groupName)
+        {
+            new SelectElement(Driver.FindElement(By.Name("group"))).SelectByText(groupName);
+        }
     }
 }
