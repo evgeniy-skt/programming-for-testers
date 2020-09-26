@@ -11,12 +11,13 @@ namespace AddressBookWebTests
             var group = GroupData.GetAll()[0];
             var oldContact = group.GetContacts();
             var contact = ContactData.GetAll().Except(oldContact).FirstOrDefault();
+
+            _applicationManager.Contact.AddContactToGroup(contact, group);
+
             var newContact = group.GetContacts();
             oldContact.Add(contact);
             newContact.Sort();
             oldContact.Sort();
-
-            _applicationManager.Contact.AddContactToGroup(contact, group);
 
             Assert.AreEqual(oldContact, newContact);
         }
