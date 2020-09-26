@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 
 namespace AddressBookWebTests
 {
@@ -111,6 +112,11 @@ namespace AddressBookWebTests
             Driver.FindElement(By.XPath($"(//input[@name='selected[]'])[{index + 1}]")).Click();
         }
 
+        private static void SelectContact(string contactId)
+        {
+            Driver.FindElement(By.Id(contactId)).Click();
+        }
+
         private static void AcceptAlert()
         {
             Driver.SwitchTo().Alert().Accept();
@@ -210,6 +216,31 @@ namespace AddressBookWebTests
             {
                 AllData = text,
             };
+        }
+
+        public void AddContactToGroup(ContactData contact, GroupData group)
+        {
+            ClearGroupFilter();
+            SelectContact(contact.Id);
+            SelectGroupToAdd(group.Name);
+            ConfirmAddingContactToGroup();
+            new WebDriverWait(Driver, TimeSpan.FromSeconds(10)).Until(d =>
+                d.FindElements(By.CssSelector("div.msgbox")).Count > 0);
+        }
+
+        private void ConfirmAddingContactToGroup()
+        {
+            Driver.FindElement(By.Name("add")).Click();
+        }
+
+        private void SelectGroupToAdd(string groupName)
+        {
+            new SelectElement(Driver.FindElement(By.Name("to_group"))).SelectByText(groupName);
+        }
+
+        private void ClearGroupFilter()
+        {
+            new SelectElement(Driver.FindElement(By.Name("group"))).SelectByText("[all]");
         }
     }
 }

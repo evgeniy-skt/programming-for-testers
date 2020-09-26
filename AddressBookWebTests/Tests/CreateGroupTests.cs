@@ -72,15 +72,10 @@ namespace AddressBookWebTests
         [Test]
         public void TestDBConnection()
         {
-            var startFromUI = DateTime.Now;
-            var fromUI = _applicationManager.Group.GetGroupsList();
-            var endFromUI = DateTime.Now;
-            Console.WriteLine(endFromUI.Subtract(startFromUI));
-
-            var startFromDB = DateTime.Now;
-            var fromDB = GroupData.GetAll();
-            var endFromDB = DateTime.Now;
-            Console.WriteLine(endFromDB.Subtract(startFromDB));
+            foreach (var contact in GroupData.GetAll()[0].GetContacts())
+            {
+                Console.WriteLine(contact);
+            }
         }
     }
 }

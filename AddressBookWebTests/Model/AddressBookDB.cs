@@ -12,6 +12,7 @@ namespace AddressBookWebTests
 
         public ITable<GroupData> Groups => GetTable<GroupData>();
         public ITable<ContactData> Contacts => GetTable<ContactData>();
+        public ITable<GroupContactRelation> GroupContactRelation => GetTable<GroupContactRelation>();
     }
 
     public class ConnectionStringSettings : IConnectionStringSettings
