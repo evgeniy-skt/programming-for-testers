@@ -8,6 +8,11 @@ namespace AddressBookWebTests
         [Test]
         public void AddContactToGroupTest()
         {
+            var groupData = new GroupData("Group name") {Header = "Group header", Footer = "Group footer"};
+            var contactData = new ContactData("Gogi", "Stepanidze");
+            _applicationManager.Contact.CreateIfNotExist(contactData);
+            _applicationManager.Group.CreateIfNotExist(groupData);
+
             var group = GroupData.GetAll()[0];
             var oldContact = group.GetContacts();
             var contact = ContactData.GetAll().Except(oldContact).FirstOrDefault();
