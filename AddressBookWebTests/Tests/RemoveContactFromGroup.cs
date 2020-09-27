@@ -11,6 +11,7 @@ namespace AddressBookWebTests
         public void RemoveContactFromGroupTest()
         {
             var group = GroupData.GetAll()[0];
+            _applicationManager.Contact.AddContactToGroupIfGroupIsEmpty();
             var oldContact = group.GetContacts();
             var contact = ContactData.GetAll().FirstOrDefault();
 

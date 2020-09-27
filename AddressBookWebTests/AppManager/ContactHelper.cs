@@ -245,6 +245,7 @@ namespace AddressBookWebTests
 
         public void RemoveContactFromGroup(ContactData contact, GroupData group)
         {
+            _applicationManager.Navigator.GoToContactPage();
             SelectGroupToRemove(group.Name);
             SelectContactToRemove(contact.Id);
             ConfirmRemoveContact();
@@ -263,6 +264,20 @@ namespace AddressBookWebTests
         private void SelectGroupToRemove(string groupName)
         {
             new SelectElement(Driver.FindElement(By.Name("group"))).SelectByText(groupName);
+        }
+
+        public void AddContactToGroupIfGroupIsEmpty()
+        {
+            var group = GroupData.GetAll()[0];
+            var oldContact = group.GetContacts();
+            if (oldContact.Count != 0) return;
+            ClearGroupFilter();
+            var contact = ContactData.GetAll().FirstOrDefault();
+            SelectContact(contact.Id);
+            SelectGroupToAdd(group.Name);
+            ConfirmAddingContactToGroup();
+            new WebDriverWait(Driver, TimeSpan.FromSeconds(10)).Until(d =>
+                d.FindElements(By.CssSelector("div.msgbox")).Count > 0);
         }
     }
 }
