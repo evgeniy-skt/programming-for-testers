@@ -55,10 +55,22 @@ namespace AddressBookWebTests
                 resultedString.AllData = resultedString.AllData + "\n" + "W: " + fromForm.WorkPhone;
             }
 
-            if (!string.IsNullOrEmpty(fromForm.Email) || !string.IsNullOrEmpty(fromForm.Email2) ||
-                !string.IsNullOrEmpty(fromForm.Email3))
+            if (string.IsNullOrEmpty(fromForm.HomePhone) && string.IsNullOrEmpty(fromForm.MobilePhone) &&
+                string.IsNullOrEmpty(fromForm.WorkPhone))
             {
-                resultedString.AllData = resultedString.AllData + "\n" + fromForm.AllEmails;
+                if (!string.IsNullOrEmpty(fromForm.Email) || !string.IsNullOrEmpty(fromForm.Email2) ||
+                    !string.IsNullOrEmpty(fromForm.Email3))
+                {
+                    resultedString.AllData = resultedString.AllData + "\n" + fromForm.AllEmails;
+                }
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(fromForm.Email) || !string.IsNullOrEmpty(fromForm.Email2) ||
+                    !string.IsNullOrEmpty(fromForm.Email3))
+                {
+                    resultedString.AllData = resultedString.AllData + "\n\n" + fromForm.AllEmails;
+                }
             }
 
             return resultedString;
