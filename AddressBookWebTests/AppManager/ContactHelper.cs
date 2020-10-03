@@ -220,6 +220,7 @@ namespace AddressBookWebTests
 
         public void AddContactToGroup(ContactData contact, GroupData group)
         {
+            _applicationManager.Navigator.GoToContactPage();
             ClearGroupFilter();
             SelectContact(contact.Id);
             SelectGroupToAdd(group.Name);
@@ -278,6 +279,16 @@ namespace AddressBookWebTests
             ConfirmAddingContactToGroup();
             new WebDriverWait(Driver, TimeSpan.FromSeconds(10)).Until(d =>
                 d.FindElements(By.CssSelector("div.msgbox")).Count > 0);
+        }
+
+        public void CreateAndAddContactToGroupIfNotExist()
+        {
+            var group = GroupData.GetAll()[0];
+            var contacts = group.GetContacts();
+            if (contacts.Count != 0) return;
+            CreateIfNotExist(new ContactData {FirstName = "Lod", LastName = "Dol"});
+            var contact = ContactData.GetAll().Except(contacts).FirstOrDefault();
+            AddContactToGroup(contact, group);
         }
     }
 }

@@ -15,6 +15,7 @@ namespace AddressBookWebTests
 
             var group = GroupData.GetAll()[0];
             var oldContact = group.GetContacts();
+            _applicationManager.Contact.CreateAndAddContactToGroupIfNotExist();
             var contact = ContactData.GetAll().Except(oldContact).FirstOrDefault();
 
             _applicationManager.Contact.AddContactToGroup(contact, group);
